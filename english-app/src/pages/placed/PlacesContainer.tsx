@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 
+// 타입 임포트 (필요 시 경로 확인)
+import type { PlaceDataType, RegionData } from "@/pages/placed/constants/my-house/my-house-data/ApartmentData";
+
 // 1. 데이터 및 타입 임포트 (총 10개 장소 데이터)
 import { apartmentData } from "@/pages/placed/constants/my-house/my-house-data/ApartmentData";
 import { houseData } from "@/pages/placed/constants/my-house/my-house-data/HouseData";
@@ -16,7 +19,7 @@ import { calendarData } from "@/pages/placed/constants/my-house/my-house-data/Ca
 import GameContainer from "./GameContainer";
 
 interface AdventureContainerProps {
-  placeData?: PlaceDataType; // 외부 수주가 없을 경우 내부 선택값을 사용하기 위해 옵셔널 처리
+  placeData?: PlaceDataType;
 }
 
 // 🌟 장소 선택 타입 정의 (총 10개 장소 키)
@@ -33,12 +36,11 @@ type PlaceType =
   | "calendar";
 
 export default function AdventureContainer({ placeData: initialPlaceData }: AdventureContainerProps) {
-  // 🌟 현재 선택된 장소 데이터 상태 (기본값: 전달받은 placeData 또는 apartmentData)
+  // 🌟 현재 선택된 장소 데이터 상태
   const [selectedPlaceKey, setSelectedPlaceKey] = useState<PlaceType>(
     (initialPlaceData?.placeKey as PlaceType) || "apartment"
   );
 
-  // 선택된 키에 따라 동적으로 장소 데이터 설정 (10개 장소 매핑)
   const placeDataMap: Record<PlaceType, PlaceDataType> = {
     apartment: apartmentData,
     house: houseData,
@@ -69,7 +71,7 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
 
   const totalWords = masterRegions.length;
 
-  // 🔄 장소 전환 시 이전 상태(선택 영역, 버블, 힌트 등) 클리어
+  // 🔄 장소 전환 시 이전 상태 클리어
   const handlePlaceChange = (key: PlaceType) => {
     stopCurrentAudio();
     setSelectedPlaceKey(key);
@@ -81,7 +83,7 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
     setClickedSet(new Set());
   };
 
-  // 오디오 시스템 제어 핸들러 (동적 폴더 경로 적용)
+  // 오디오 시스템 제어 핸들러
   const stopCurrentAudio = () => {
     if (currentAudioRef.current) {
       currentAudioRef.current.pause();
@@ -92,9 +94,9 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
   const playSentenceAudios = (wordKey: string) => {
     stopCurrentAudio();
     if (!wordKey) return;
-    const cleanTargetId = wordKey.replace(/_/g, "");
+    // 🌟 안전하게 소문자 변환 적용
+    const cleanTargetId = wordKey.replace(/_/g, "").toLowerCase();
     
-    // 🌟 장소 키에 맞춰 동적으로 폴더 이름 매핑 (${placeKey}Sentence)
     const folderName = `${placeData.placeKey}Sentence`;
     const firstAudio = new Audio(`/audio/${folderName}/${cleanTargetId}1.mp3`);
     currentAudioRef.current = firstAudio;
@@ -149,10 +151,11 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
   const centerCoords = activeClickedTarget ? getPolygonCenter(masterRegions.find(r => r.wordKey === activeClickedTarget)?.points || "") : { x: 50, y: 50 };
   const currentExploreWord = activeClickedTarget ? masterRegions.find(r => r.wordKey === activeClickedTarget) : null;
 
-  // 언마운트 시 버블 타이머 클린업
+  // 언마운트 시 버블 타이머 및 오디오 클린업
   useEffect(() => {
     return () => {
       if (bubbleTimerRef.current) clearTimeout(bubbleTimerRef.current);
+      stopCurrentAudio();
     };
   }, []);
 
@@ -160,108 +163,32 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
     <div className="min-h-screen flex flex-col items-center justify-start pb-16 w-full relative"
          style={{ background: "radial-gradient(1200px 500px at 50% -10%, #BFE8F7 0%, transparent 60%), linear-gradient(180deg, #A7DCF0 0%, #C9EAD3 48%, #B4E09A 100%)" }}>
       
-      {/* 🆕 1. 장소 선택 토글 버튼 (총 10개 장소) */}
+      {/* 1. 장소 선택 토글 버튼 (총 10개 장소) */}
       <div className="pt-8 flex gap-2.5 z-20 flex-wrap justify-center max-w-[1100px] px-4">
-        <button
-          onClick={() => handlePlaceChange("apartment")}
-          className={`px-4 py-2 rounded-full font-black text-xs shadow-md transition-all ${
-            selectedPlaceKey === "apartment"
-              ? "bg-[#2E7D32] text-white scale-105 border-2 border-white"
-              : "bg-white/80 text-emerald-800 hover:bg-white"
-          }`}
-        >
-          🏢 Apartment
-        </button>
-        <button
-          onClick={() => handlePlaceChange("house")}
-          className={`px-4 py-2 rounded-full font-black text-xs shadow-md transition-all ${
-            selectedPlaceKey === "house"
-              ? "bg-[#2E7D32] text-white scale-105 border-2 border-white"
-              : "bg-white/80 text-emerald-800 hover:bg-white"
-          }`}
-        >
-          🏡 House
-        </button>
-        <button
-          onClick={() => handlePlaceChange("kitchen")}
-          className={`px-4 py-2 rounded-full font-black text-xs shadow-md transition-all ${
-            selectedPlaceKey === "kitchen"
-              ? "bg-[#2E7D32] text-white scale-105 border-2 border-white"
-              : "bg-white/80 text-emerald-800 hover:bg-white"
-          }`}
-        >
-          🍳 Kitchen
-        </button>
-        <button
-          onClick={() => handlePlaceChange("livingroom")}
-          className={`px-4 py-2 rounded-full font-black text-xs shadow-md transition-all ${
-            selectedPlaceKey === "livingroom"
-              ? "bg-[#2E7D32] text-white scale-105 border-2 border-white"
-              : "bg-white/80 text-emerald-800 hover:bg-white"
-          }`}
-        >
-          📺 Living Room
-        </button>
-        <button
-          onClick={() => handlePlaceChange("bathroom")}
-          className={`px-4 py-2 rounded-full font-black text-xs shadow-md transition-all ${
-            selectedPlaceKey === "bathroom"
-              ? "bg-[#2E7D32] text-white scale-105 border-2 border-white"
-              : "bg-white/80 text-emerald-800 hover:bg-white"
-          }`}
-        >
-          🛁 Bathroom
-        </button>
-        <button
-          onClick={() => handlePlaceChange("bedroom")}
-          className={`px-4 py-2 rounded-full font-black text-xs shadow-md transition-all ${
-            selectedPlaceKey === "bedroom"
-              ? "bg-[#2E7D32] text-white scale-105 border-2 border-white"
-              : "bg-white/80 text-emerald-800 hover:bg-white"
-          }`}
-        >
-          🛏️ Bedroom
-        </button>
-        <button
-          onClick={() => handlePlaceChange("playground")}
-          className={`px-4 py-2 rounded-full font-black text-xs shadow-md transition-all ${
-            selectedPlaceKey === "playground"
-              ? "bg-[#2E7D32] text-white scale-105 border-2 border-white"
-              : "bg-white/80 text-emerald-800 hover:bg-white"
-          }`}
-        >
-          🛝 Playground
-        </button>
-        <button
-          onClick={() => handlePlaceChange("recycling_area")}
-          className={`px-4 py-2 rounded-full font-black text-xs shadow-md transition-all ${
-            selectedPlaceKey === "recycling_area"
-              ? "bg-[#2E7D32] text-white scale-105 border-2 border-white"
-              : "bg-white/80 text-emerald-800 hover:bg-white"
-          }`}
-        >
-          ♻️ Recycling
-        </button>
-        <button
-          onClick={() => handlePlaceChange("family")}
-          className={`px-4 py-2 rounded-full font-black text-xs shadow-md transition-all ${
-            selectedPlaceKey === "family"
-              ? "bg-[#2E7D32] text-white scale-105 border-2 border-white"
-              : "bg-white/80 text-emerald-800 hover:bg-white"
-          }`}
-        >
-          👨‍👩‍👧‍👦 Family
-        </button>
-        <button
-          onClick={() => handlePlaceChange("calendar")}
-          className={`px-4 py-2 rounded-full font-black text-xs shadow-md transition-all ${
-            selectedPlaceKey === "calendar"
-              ? "bg-[#2E7D32] text-white scale-105 border-2 border-white"
-              : "bg-white/80 text-emerald-800 hover:bg-white"
-          }`}
-        >
-          📅 Calendar
-        </button>
+        {[
+          { key: "apartment", label: "🏢 Apartment" },
+          { key: "house", label: "🏡 House" },
+          { key: "kitchen", label: "🍳 Kitchen" },
+          { key: "livingroom", label: "📺 Living Room" },
+          { key: "bathroom", label: "🛁 Bathroom" },
+          { key: "bedroom", label: "🛏️ Bedroom" },
+          { key: "playground", label: "🛝 Playground" },
+          { key: "recycling_area", label: "♻️ Recycling" },
+          { key: "family", label: "👨‍👩‍👧‍👦 Family" },
+          { key: "calendar", label: "📅 Calendar" },
+        ].map((item) => (
+          <button
+            key={item.key}
+            onClick={() => handlePlaceChange(item.key as PlaceType)}
+            className={`px-4 py-2 rounded-full font-black text-xs shadow-md transition-all ${
+              selectedPlaceKey === item.key
+                ? "bg-[#2E7D32] text-white scale-105 border-2 border-white"
+                : "bg-white/80 text-emerald-800 hover:bg-white"
+            }`}
+          >
+            {item.label}
+          </button>
+        ))}
       </div>
 
       {/* 장소 기반 동적 대타이틀 표출 */}
@@ -275,7 +202,7 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
         <button onClick={() => { stopCurrentAudio(); setCurrentMode("game"); }} className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-extrabold text-base transition-all duration-300 ${currentMode === "game" ? "bg-[#4CAF50] text-white shadow-md scale-105" : "text-emerald-800 hover:bg-white/30"}`}>🎮 Game Mode</button>
       </div>
 
-      {/* ==================== 1. EXPLORER MODE 메인 레이아웃 ==================== */}
+      {/* ==================== 1. EXPLORER MODE ==================== */}
       {currentMode === "explore" && (
         <div className="w-full max-w-[1000px] bg-[#FFFBF0] rounded-[40px] shadow-2xl p-6 border-8 border-white flex flex-col gap-4 relative">
           <div className="relative aspect-[16/9] rounded-[30px] border border-gray-100 overflow-hidden shadow-inner bg-gray-100">
@@ -325,21 +252,37 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
         </div>
       )}
 
-      {/* ==================== 2. GAME MODE 대시보드 레이어 분리 조립 ==================== */}
+      {/* ==================== 2. GAME MODE ==================== */}
       {currentMode === "game" && (
         <GameContainer key={selectedPlaceKey} placeData={placeData} />
       )}
 
-      {/* ==================== 🎬 미디어 비디오 학습 모달 (Explorer 전용) ==================== */}
+      {/* ==================== 🎬 미디어 비디오 학습 모달 ==================== */}
       {videoTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
           <div className="bg-[#FFFBF0] rounded-[40px] border-8 border-white p-6 max-w-3xl w-full flex flex-col gap-4">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-black text-[#4B9343] capitalize">{videoTarget.wordKey.replace(/_/g, " ")}</h2>
-              <button onClick={() => setVideoTarget(null)} className="w-8 h-8 rounded-full border flex items-center justify-center font-bold text-gray-400 bg-white shadow-sm hover:text-black">✕</button>
+              <button 
+                onClick={() => {
+                  stopCurrentAudio(); // 👈 닫을 때 오디오 정지
+                  setVideoTarget(null);
+                }} 
+                className="w-8 h-8 rounded-full border flex items-center justify-center font-bold text-gray-400 bg-white shadow-sm hover:text-black"
+              >
+                ✕
+              </button>
             </div>
             <div className="aspect-[16/9] bg-black rounded-2xl overflow-hidden shadow-inner">
-              <video src={videoTarget.videoPath} controls autoPlay onEnded={() => setClickedSet(p => new Set(p).add(videoTarget.wordKey))} className="w-full h-full object-contain" />
+              <video 
+                src={videoTarget.videoPath} 
+                controls 
+                autoPlay 
+                muted        // 👈 자동재생 차단 방지
+                playsInline  // 👈 인라인 재생
+                onEnded={() => setClickedSet(p => new Set(p).add(videoTarget.wordKey))} 
+                className="w-full h-full object-contain" 
+              />
             </div>
             {/* 오디오 가이드 문장 리스트 */}
             <div className="flex flex-col gap-2 bg-white/60 border p-4 rounded-xl shadow-inner">

@@ -1,65 +1,8 @@
 import React from "react";
 import { Timer, X } from "lucide-react";
 
-// @/assets 경로 사용 (src/assets를 의미)
-import balconyImg from "@/assets/image/places/game/apartment/Balcony.png";
-import basementImg from "@/assets/image/places/game/apartment/Basement.png";
-import buildingImg from "@/assets/image/places/game/apartment/Building.png";
-import columnImg from "@/assets/image/places/game/apartment/Column.png";
-import elevatorImg from "@/assets/image/places/game/apartment/Elevator.png";
-import entranceImg from "@/assets/image/places/game/apartment/Entrance.png";
-import gardenImg from "@/assets/image/places/game/apartment/Garden.png";
-import gymImg from "@/assets/image/places/game/apartment/Gym.png";
-import hallwayImg from "@/assets/image/places/game/apartment/Hallway.png";
-import intercormImg from "@/assets/image/places/game/apartment/Intercorm.png";
-import loadingZoneImg from "@/assets/image/places/game/apartment/Loading zone.png";
-import lobbyImg from "@/assets/image/places/game/apartment/Lobby.png";
-import logoImg from "@/assets/image/places/game/apartment/logo.png";
-import mailboxImg from "@/assets/image/places/game/apartment/Mailbox.png";
-import parkingLotImg from "@/assets/image/places/game/apartment/Parking lot.png";
-import playgroundImg from "@/assets/image/places/game/apartment/Playground.png";
-import recyclingAreaImg from "@/assets/image/places/game/apartment/Recycling area.png";
-import rooftopImg from "@/assets/image/places/game/apartment/Rooftop.png";
-import securityOfficeImg from "@/assets/image/places/game/apartment/Security office.png";
-import stairsImg from "@/assets/image/places/game/apartment/Stairs.png";
-import terraceImg from "@/assets/image/places/game/apartment/Terrace.png";
-import unitImg from "@/assets/image/places/game/apartment/Unit.png";
-import walkingPathImg from "@/assets/image/places/game/apartment/Walking path.png";
-import wallImg from "@/assets/image/places/game/apartment/Wall.png";
-import windowImg from "@/assets/image/places/game/apartment/Window.png";
-
-const IMAGE_ASSETS: Record<string, string> = {
-  balcony: balconyImg,
-  basement: basementImg,
-  building: buildingImg,
-  column: columnImg,
-  elevator: elevatorImg,
-  entrance: entranceImg,
-  garden: gardenImg,
-  gym: gymImg,
-  hallway: hallwayImg,
-  intercorm: intercormImg,
-  loadingzone: loadingZoneImg,
-  loading_zone: loadingZoneImg,
-  lobby: lobbyImg,
-  logo: logoImg,
-  mailbox: mailboxImg,
-  parkinglot: parkingLotImg,
-  parking_lot: parkingLotImg,
-  playground: playgroundImg,
-  recyclingarea: recyclingAreaImg,
-  recycling_area: recyclingAreaImg,
-  rooftop: rooftopImg,
-  securityoffice: securityOfficeImg,
-  security_office: securityOfficeImg,
-  stairs: stairsImg,
-  terrace: terraceImg,
-  unit: unitImg,
-  walkingpath: walkingPathImg,
-  walking_path: walkingPathImg,
-  wall: wallImg,
-  window: windowImg,
-};
+// index에서 통합 함수 및 타입 import
+import { getPlaceImageUrl, PlaceTheme } from "../gameConstants";
 
 interface SpeedOption {
   wordKey: string;
@@ -76,18 +19,10 @@ interface SpeedMatchModalProps {
   speedOptions: SpeedOption[];
   speedFeedback: "correct" | "wrong" | null;
   selectedSpeedOption: string | null;
+  theme?: PlaceTheme; // 'apartment' | 'house' 전달받기 (기본값 설정)
   handleSpeedOptionClick: (optionObj: SpeedOption) => void;
   closeGameModal: () => void;
 }
-
-const getImageUrl = (optionObj: SpeedOption): string => {
-  if (optionObj.imageUrl && optionObj.imageUrl.trim() !== "") {
-    return optionObj.imageUrl;
-  }
-
-  const key = optionObj.wordKey.toLowerCase().replace(/[\s_]+/g, "");
-  return IMAGE_ASSETS[key] || "";
-};
 
 export default function SpeedMatchModal({
   currentQuestion,
@@ -96,6 +31,7 @@ export default function SpeedMatchModal({
   speedOptions,
   speedFeedback,
   selectedSpeedOption,
+  theme = "apartment", // 장소 테마 기본값
   handleSpeedOptionClick,
   closeGameModal,
 }: SpeedMatchModalProps) {
@@ -176,7 +112,8 @@ export default function SpeedMatchModal({
                 : "border-rose-500 bg-rose-500 opacity-85 scale-[0.98]";
             }
 
-            const imgUrl = getImageUrl(optionObj);
+            // 통합 함수를 호출해 theme('apartment' | 'house')에 맞춰 이미지 자동 조회
+            const imgUrl = getPlaceImageUrl(theme, optionObj.wordKey, optionObj.imageUrl);
 
             return (
               <button

@@ -1,70 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import balconyImg from "@/assets/image/places/game/apartment/Balcony.png";
-import basementImg from "@/assets/image/places/game/apartment/Basement.png";
-import buildingImg from "@/assets/image/places/game/apartment/Building.png";
-import columnImg from "@/assets/image/places/game/apartment/Column.png";
-import elevatorImg from "@/assets/image/places/game/apartment/Elevator.png";
-import entranceImg from "@/assets/image/places/game/apartment/Entrance.png";
-import gardenImg from "@/assets/image/places/game/apartment/Garden.png";
-import gymImg from "@/assets/image/places/game/apartment/Gym.png";
-import hallwayImg from "@/assets/image/places/game/apartment/Hallway.png";
-import intercormImg from "@/assets/image/places/game/apartment/Intercorm.png";
-import loadingZoneImg from "@/assets/image/places/game/apartment/Loading zone.png";
-import lobbyImg from "@/assets/image/places/game/apartment/Lobby.png";
-import logoImg from "@/assets/image/places/game/apartment/logo.png";
-import mailboxImg from "@/assets/image/places/game/apartment/Mailbox.png";
-import parkingLotImg from "@/assets/image/places/game/apartment/Parking lot.png";
-import playgroundImg from "@/assets/image/places/game/apartment/Playground.png";
-import recyclingAreaImg from "@/assets/image/places/game/apartment/Recycling area.png";
-import rooftopImg from "@/assets/image/places/game/apartment/Rooftop.png";
-import securityOfficeImg from "@/assets/image/places/game/apartment/Security office.png";
-import stairsImg from "@/assets/image/places/game/apartment/Stairs.png";
-import terraceImg from "@/assets/image/places/game/apartment/Terrace.png";
-import unitImg from "@/assets/image/places/game/apartment/Unit.png";
-import walkingPathImg from "@/assets/image/places/game/apartment/Walking path.png";
-import wallImg from "@/assets/image/places/game/apartment/Wall.png";
-import windowImg from "@/assets/image/places/game/apartment/Window.png";
-
-// 1. 단어 키(wordKey) ↔ 로컬 이미지 매핑
-const IMAGE_ASSETS: Record<string, string> = {
-  balcony: balconyImg,
-  basement: basementImg,
-  building: buildingImg,
-  column: columnImg,
-  elevator: elevatorImg,
-  entrance: entranceImg,
-  garden: gardenImg,
-  gym: gymImg,
-  hallway: hallwayImg,
-  intercorm: intercormImg,
-  loadingzone: loadingZoneImg,
-  loading_zone: loadingZoneImg,
-  lobby: lobbyImg,
-  logo: logoImg,
-  mailbox: mailboxImg,
-  parkinglot: parkingLotImg,
-  parking_lot: parkingLotImg,
-  playground: playgroundImg,
-  recyclingarea: recyclingAreaImg,
-  recycling_area: recyclingAreaImg,
-  rooftop: rooftopImg,
-  securityoffice: securityOfficeImg,
-  security_office: securityOfficeImg,
-  stairs: stairsImg,
-  terrace: terraceImg,
-  unit: unitImg,
-  walkingpath: walkingPathImg,
-  walking_path: walkingPathImg,
-  wall: wallImg,
-  window: windowImg,
-};
-
-// 2. wordKey를 입력받아 local asset 이미지 경로를 찾는 헬퍼 함수
-const getImageUrl = (wordKey: string): string => {
-  if (!wordKey) return "";
-  const key = wordKey.toLowerCase().replace(/[\s_]+/g, "");
-  return IMAGE_ASSETS[key] || "";
-};
+import { getPlaceImageUrl, PlaceTheme } from "../gameConstants";
 
 interface RegionItem {
   wordKey: string;
@@ -73,7 +8,6 @@ interface RegionItem {
   [key: string]: any;
 }
 
-// 3. Mock Data (기본 데이터)
 const mockRegions: RegionItem[] = [
   { wordKey: "loading_zone", meaning: "하역구역" },
   { wordKey: "security_office", meaning: "경비실" },
@@ -88,11 +22,13 @@ const mockRegions: RegionItem[] = [
 
 interface InfiniteStairsModalProps {
   masterRegions?: RegionItem[];
+  theme?: PlaceTheme; // 'apartment' | 'house' 지원
   closeGameModal: () => void;
 }
 
 export default function InfiniteStairsModal({
   masterRegions = mockRegions,
+  theme = "apartment",
   closeGameModal,
 }: InfiniteStairsModalProps) {
   const activePool = masterRegions && masterRegions.length >= 8 ? masterRegions : mockRegions;
@@ -111,30 +47,32 @@ export default function InfiniteStairsModal({
     isLeft: true,
   });
 
-  // 🎯 Generate question step (로컬 asset 경로 최우선 할당)
-  const generateNewStep = useCallback((pool: RegionItem[]) => {
-    if (!pool || pool.length < 8) return null;
+  // 🎯 Generate question step
+  const generateNewStep = useCallback(
+    (pool: RegionItem[]) => {
+      if (!pool || pool.length < 8) return null;
 
-    const targetIdx = Math.floor(Math.random() * pool.length);
-    const target = pool[targetIdx];
+      const targetIdx = Math.floor(Math.random() * pool.length);
+      const target = pool[targetIdx];
 
-    let altPool = pool.filter((_, idx) => idx !== targetIdx);
-    altPool.sort(() => 0.5 - Math.random());
-    const distractors = altPool.slice(0, 7).map((item) => item.wordKey);
+      let altPool = pool.filter((_, idx) => idx !== targetIdx);
+      altPool.sort(() => 0.5 - Math.random());
+      const distractors = altPool.slice(0, 7).map((item) => item.wordKey);
 
-    const newOptions = [...distractors, target.wordKey].sort(() => 0.5 - Math.random());
+      const newOptions = [...distractors, target.wordKey].sort(() => 0.5 - Math.random());
 
-    // IMAGE_ASSETS에서 이미지 검색 -> 없으면 전달된 imageUrl 사용
-    const finalImageUrl = getImageUrl(target.wordKey) || target.imageUrl || "";
+      const finalImageUrl = getPlaceImageUrl(theme, target.wordKey, target.imageUrl);
 
-    return {
-      target: {
-        imageUrl: finalImageUrl,
-        wordKey: target.wordKey,
-      },
-      newOptions,
-    };
-  }, []);
+      return {
+        target: {
+          imageUrl: finalImageUrl,
+          wordKey: target.wordKey,
+        },
+        newOptions,
+      };
+    },
+    [theme]
+  );
 
   // Initialize game
   useEffect(() => {

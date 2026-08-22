@@ -83,7 +83,7 @@ export default function ColorMagicModal({
             >
               <Volume2 className="w-4 h-4" />
               <span className="tracking-wide text-xs">
-                {currentQuestion.wordKey?.replace(/_/g, " ")}
+                
               </span>
             </button>
           )}

@@ -25,8 +25,6 @@ import MyTownPage from "@/pages/placed/constants/my-town/TownMain";
 
 
 
-import ApartmentGame from '@/pages/placed/constants/my-house/houseGamePage/ApartmentGame';
-
 function App() {
     return (
         <>
@@ -90,9 +88,9 @@ function App() {
 
                         </Route>
                         <Route path="house/houseGamePage">
-                            <Route path="apartmentGame" element={< ApartmentGame/>} />
+                            
                         </Route>
-
+                    
                         <Route path="town/townMain" element={<MyTownPage />} />
                     </Route>
 

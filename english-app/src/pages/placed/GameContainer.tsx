@@ -1,20 +1,33 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Search, Ear, Palette, FileText, Puzzle, Zap, Type, Layers, Image as ImageIcon, ArrowUpRight, Trophy } from "lucide-react";
+import {
+  Search,
+  Ear,
+  Palette,
+  FileText,
+  Puzzle,
+  Zap,
+  Type,
+  Layers,
+  Image as ImageIcon,
+  ArrowUpRight,
+  Trophy,
+} from "lucide-react";
 
 // 데이터 및 타입 임포트
-import { PlaceDataType, RegionData } from "@/pages/placed/constants/my-house/my-house-data/ApartmentData";
+import {
+  PlaceDataType,
+  RegionData,
+} from "@/pages/placed/constants/my-house/my-house-data/ApartmentData";
 
-// 🌟 확장성을 위한 전체 장소 이미지 맵 (새 장소가 추가되면 여기에 이미지 등록만 하면 됩니다!)
-import apartmentImg from '@/assets/image/places/house/apartment.png';
-import houseImg from '@/assets/image/places/house/house.png';
-
+// 🌟 확장성을 위한 전체 장소 이미지 맵
+import apartmentImg from "@/assets/image/places/house/apartment.png";
+import houseImg from "@/assets/image/places/house/house.png";
 
 // 장소 키(placeKey)별 이미지 레지스트리 맵
 const PLACE_IMAGES: Record<string, string> = {
   apartment: apartmentImg,
   house: houseImg,
 };
-
 
 // 🌟 1~11번 독립형 미니 게임 모달 컴포넌트 전체 임포트 벨트
 import FindPlaceModal from "./components/game/FindPlaceModal";
@@ -30,8 +43,7 @@ import BossChallengeModal from "./components/game/BossChallengeModal";
 
 interface GameContainerProps {
   placeData: PlaceDataType;
-  // 여러 장소의 이미지를 상위에서 통째로 받거나, 내부 PLACE_IMAGES 레지스트리를 조합하여 사용
-  placeImages?: Record<string, string>; 
+  placeImages?: Record<string, string>;
 }
 
 export default function GameContainer({ placeData, placeImages }: GameContainerProps) {
@@ -41,8 +53,7 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
   const activePlaceImages = {
     ...PLACE_IMAGES,
     ...placeImages,
-    // 현재 진입한 장소의 기본 배경 이미지도 자동 등록
-    [placeData.placeKey]: bgImage 
+    [placeData.placeKey]: bgImage,
   };
 
   const [selectedGame, setSelectedGame] = useState<any>(null);
@@ -64,23 +75,22 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
   const [speedFeedback, setSpeedFeedback] = useState<"correct" | "wrong" | null>(null);
   const [selectedSpeedOption, setSelectedSpeedOption] = useState<string | null>(null);
 
-  
   const currentAudioRef = useRef<HTMLAudioElement | null>(null);
   const timerIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // 11개 게임 대시보드 카드 목록
   const cards = [
-    { id: 1, gameKey: 'find_place', title: 'Find the Place', desc: 'Listen to the word and tap the picture!', icon: <Search className="w-6 h-6 text-slate-700" /> },
-    { id: 2, gameKey: 'listen_find', title: 'Listen & Find', desc: 'Listen to the sentence and find the correct word in the picture.', icon: <Ear className="w-6 h-6 text-amber-500" /> },
-    { id: 3, gameKey: 'color_magic', title: 'Color Magic', desc: 'Guess the word to bring the black and white picture to life!', icon: <Palette className="w-6 h-6 text-purple-500" /> },
-    { id: 4, gameKey: 'fill_blank', title: 'Fill in the Blank', desc: 'Choose the correct word to complete the sentence.', icon: <FileText className="w-6 h-6 text-blue-500" /> },
-    { id: 5, gameKey: 'sentence_builder', title: 'Sentence Builder', desc: 'Tap the scattered words in order to build a full sentence!', icon: <Puzzle className="w-6 h-6 text-green-500" /> },
-    { id: 6, gameKey: 'speed_match', title: 'Speed Match', desc: 'Quickly match the English words with their alternatives within 30 seconds!', icon: <Zap className="w-6 h-6 text-yellow-500" /> },
-    { id: 7, gameKey: 'spelling_bee', title: 'Spelling Bee', desc: 'Listen to the word and assemble the correct spelling chips.', icon: <Type className="w-6 h-6 text-indigo-500" /> },
-    { id: 8, gameKey: 'memory_cards', title: 'Memory Cards', desc: 'Flip the cards and find the matching English name and audio sound pairs.', icon: <Layers className="w-6 h-6 text-rose-500" /> },
-    { id: 9, gameKey: 'picture_quiz', title: 'Picture Quiz', desc: 'Look at the hidden image piece and discover the matching name.', icon: <ImageIcon className="w-6 h-6 text-emerald-500" /> },
-    { id: 10, gameKey: 'infinite_stairs', title: 'Infinite Stairs', desc: 'Listen to the audio sound and step on the matching name button!', icon: <ArrowUpRight className="w-6 h-6 text-orange-500" /> },
-    { id: 11, gameKey: 'boss_challenge', title: 'Boss Challenge', desc: 'Clear 10 extreme hidden combination quizzes to conquer this stage!', icon: <Trophy className="w-6 h-6 text-amber-600" /> },
+    { id: 1, gameKey: "find_place", title: "Find the Place", desc: "Listen to the word and tap the picture!", icon: <Search className="w-6 h-6 text-slate-700" /> },
+    { id: 2, gameKey: "listen_find", title: "Listen & Find", desc: "Listen to the sentence and find the correct word in the picture.", icon: <Ear className="w-6 h-6 text-amber-500" /> },
+    { id: 3, gameKey: "color_magic", title: "Color Magic", desc: "Guess the word to bring the black and white picture to life!", icon: <Palette className="w-6 h-6 text-purple-500" /> },
+    { id: 4, gameKey: "fill_blank", title: "Fill in the Blank", desc: "Choose the correct word to complete the sentence.", icon: <FileText className="w-6 h-6 text-blue-500" /> },
+    { id: 5, gameKey: "sentence_builder", title: "Sentence Builder", desc: "Tap the scattered words in order to build a full sentence!", icon: <Puzzle className="w-6 h-6 text-green-500" /> },
+    { id: 6, gameKey: "speed_match", title: "Speed Match", desc: "Quickly match the English words with their alternatives within 30 seconds!", icon: <Zap className="w-6 h-6 text-yellow-500" /> },
+    { id: 7, gameKey: "spelling_bee", title: "Spelling Bee", desc: "Listen to the word and assemble the correct spelling chips.", icon: <Type className="w-6 h-6 text-indigo-500" /> },
+    { id: 8, gameKey: "memory_cards", title: "Memory Cards", desc: "Flip the cards and find the matching English name and audio sound pairs.", icon: <Layers className="w-6 h-6 text-rose-500" /> },
+    { id: 9, gameKey: "picture_quiz", title: "Picture Quiz", desc: "Look at the hidden image piece and discover the matching name.", icon: <ImageIcon className="w-6 h-6 text-emerald-500" /> },
+    { id: 10, gameKey: "infinite_stairs", title: "Infinite Stairs", desc: "Listen to the audio sound and step on the matching name button!", icon: <ArrowUpRight className="w-6 h-6 text-orange-500" /> },
+    { id: 11, gameKey: "boss_challenge", title: "Boss Challenge", desc: "Clear 10 extreme hidden combination quizzes to conquer this stage!", icon: <Trophy className="w-6 h-6 text-amber-600" /> },
   ];
 
   // 문장 풀 생성
@@ -90,11 +100,10 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
       wordKey: item.wordKey,
       meaning: item.meaning || item.korean || item.wordKey.replace(/_/g, " "),
       sentence: rawSentence,
-      displaySentence: rawSentence.replace(new RegExp(`\\b${item.wordKey.replace(/_/g, " ")}\\b`, 'gi'), "______")
+      displaySentence: rawSentence.replace(new RegExp(`\\b${item.wordKey.replace(/_/g, " ")}\\b`, "gi"), "______"),
     };
   });
 
-  
   const stopCurrentAudio = () => {
     if (currentAudioRef.current) {
       currentAudioRef.current.pause();
@@ -109,7 +118,7 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
     setIsPlaying(true);
     const audio = new Audio(url);
     currentAudioRef.current = audio;
-    audio.play().catch(err => console.log(err));
+    audio.play().catch((err) => console.log(err));
     audio.onended = () => setIsPlaying(false);
   };
 
@@ -121,7 +130,8 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
     const firstAudio = new Audio(`/audio/apartmentSentence/${cleanTargetId}1.mp3`);
     currentAudioRef.current = firstAudio;
 
-    firstAudio.play()
+    firstAudio
+      .play()
       .then(() => {
         firstAudio.onended = () => {
           const secondAudio = new Audio(`/audio/apartmentSentence/${cleanTargetId}2.mp3`);
@@ -139,7 +149,7 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
   const triggerAudio = (question: any, forceGameKey = null) => {
     if (!question) return;
     const activeGameKey = forceGameKey || selectedGame?.gameKey;
-    if (activeGameKey === 'listen_find' || activeGameKey === 'fill_blank' || activeGameKey === 'sentence_builder') {
+    if (activeGameKey === "listen_find" || activeGameKey === "fill_blank" || activeGameKey === "sentence_builder") {
       playSentenceAudios(question.wordKey);
     } else {
       playAudio(question.audioUrl);
@@ -147,9 +157,9 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
   };
 
   const generateMultipleChoices = (correctWord: string, pool: RegionData[]) => {
-    const correctObj = pool.find(item => item.wordKey === correctWord)!;
+    const correctObj = pool.find((item) => item.wordKey === correctWord)!;
     const choices = [correctObj];
-    const filteredPool = pool.filter(item => item.wordKey !== correctWord);
+    const filteredPool = pool.filter((item) => item.wordKey !== correctWord);
     const shuffledPool = [...filteredPool].sort(() => 0.5 - Math.random());
     for (let i = 0; i < 3; i++) {
       if (shuffledPool[i]) choices.push(shuffledPool[i]);
@@ -159,7 +169,7 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
 
   const setupSentenceBuilderQuestion = (question: any) => {
     if (!question || !question.sentence) return;
-    const cleanedText = question.sentence.replace(/[.]/g, ' .');
+    const cleanedText = question.sentence.replace(/[.]/g, " .");
     const wordList = cleanedText.split(/\s+/).filter((w: string) => w.length > 0);
     const structuredWords = wordList.map((w: string, idx: number) => ({ id: `${w}-${idx}`, word: w }));
     setShuffledChips([...structuredWords].sort(() => 0.5 - Math.random()));
@@ -220,19 +230,24 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
     clearInterval(timerIntervalRef.current!);
     setSelectedGame(card);
 
-    if (['memory_cards', 'infinite_stairs', 'boss_challenge'].includes(card.gameKey)) {
+    if (["memory_cards", "infinite_stairs", "boss_challenge"].includes(card.gameKey)) {
       return;
     }
 
-    const shuffled = [...masterRegions].sort(() => 0.5 - Math.random());
-    
-    if (card.gameKey === 'color_magic') {
-      setGameQuestions(shuffled);
+    if (card.gameKey === "color_magic") {
+      // wordKey 기준 중복 제거 후 셔플
+      const uniquePool = Array.from(
+        new Map(masterRegions.map((item) => [item.wordKey, item])).values()
+      ).sort(() => 0.5 - Math.random());
+
+      setGameQuestions(uniquePool);
       setCurrentQuestionIdx(0);
       setColoredWords([]);
       setColorMagicFeedback(null);
-      setTimeout(() => { playAudio(shuffled[0].audioUrl); }, 400);
-    } else if (card.gameKey === 'fill_blank') {
+      setTimeout(() => {
+        playAudio(uniquePool[0]?.audioUrl);
+      }, 400);
+    } else if (card.gameKey === "fill_blank") {
       const shuffledPool = [...sentenceQuestionsPool].sort(() => 0.5 - Math.random());
       const selectedQuestions = shuffledPool.slice(0, 5);
       setGameQuestions(selectedQuestions);
@@ -240,9 +255,9 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
       setScore(0);
       setBlankFeedback(null);
       setSelectedOption(null);
-      setBlankOptions(generateMultipleChoices(selectedQuestions[0].wordKey, masterRegions).map(o => o.wordKey));
+      setBlankOptions(generateMultipleChoices(selectedQuestions[0].wordKey, masterRegions).map((o) => o.wordKey));
       setTimeout(() => { playSentenceAudios(selectedQuestions[0].wordKey); }, 400);
-    } else if (card.gameKey === 'sentence_builder') {
+    } else if (card.gameKey === "sentence_builder") {
       const shuffledPool = [...sentenceQuestionsPool].sort(() => 0.5 - Math.random());
       const selectedQuestions = shuffledPool.slice(0, 4);
       setGameQuestions(selectedQuestions);
@@ -251,7 +266,8 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
       setBuilderFeedback(null);
       setupSentenceBuilderQuestion(selectedQuestions[0]);
       setTimeout(() => { playSentenceAudios(selectedQuestions[0].wordKey); }, 400);
-    } else if (card.gameKey === 'speed_match') {
+    } else if (card.gameKey === "speed_match") {
+      const shuffled = [...masterRegions].sort(() => 0.5 - Math.random());
       setGameQuestions(shuffled);
       setCurrentQuestionIdx(0);
       setScore(0);
@@ -271,7 +287,15 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
           return prev - 1;
         });
       }, 1000);
+    } else if (card.gameKey === "spelling_bee" || card.gameKey === "picture_quiz") {
+      // 🌟 Picture Quiz와 Spelling Bee는 시작 시 외부 음성 자동 재생(triggerAudio)을 생략합니다.
+      const shuffled = [...masterRegions].sort(() => 0.5 - Math.random());
+      const selectedQuestions = shuffled.slice(0, 5);
+      setGameQuestions(selectedQuestions);
+      setCurrentQuestionIdx(0);
+      setScore(0);
     } else {
+      const shuffled = [...masterRegions].sort(() => 0.5 - Math.random());
       const selectedQuestions = shuffled.slice(0, 5);
       setGameQuestions(selectedQuestions);
       setCurrentQuestionIdx(0);
@@ -289,8 +313,8 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
     setSelectedSpeedOption(selectedOptionObj.wordKey);
 
     if (selectedOptionObj.wordKey === currentQuestion.wordKey) {
-      setScore(prev => prev + 1);
-      setSpeedFeedback('correct');
+      setScore((prev) => prev + 1);
+      setSpeedFeedback("correct");
       setTimeout(() => {
         setSpeedFeedback(null);
         setSelectedSpeedOption(null);
@@ -305,8 +329,8 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
         }
       }, 800);
     } else {
-      setSpeedFeedback('wrong');
-      setTimeLeft(prev => Math.max(0, prev - 2));
+      setSpeedFeedback("wrong");
+      setTimeLeft((prev) => Math.max(0, prev - 2));
       setTimeout(() => {
         setSpeedFeedback(null);
         setSelectedSpeedOption(null);
@@ -315,10 +339,10 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
   };
 
   const handleModalSuccessFeedback = () => {
-    setScore(prev => prev + 1);
+    setScore((prev) => prev + 1);
     setTimeout(() => {
       if (currentQuestionIdx < gameQuestions.length - 1) {
-        setCurrentQuestionIdx(prev => prev + 1);
+        setCurrentQuestionIdx((prev) => prev + 1);
       } else {
         alert("Wonderful! Stage Perfect Cleared! ✨");
         closeGameModal();
@@ -329,8 +353,12 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
   const handleBlankOptionClick = (option: string) => {
     if (blankFeedback) return;
     setSelectedOption(option);
-    if (option === currentQuestion.wordKey) { setScore(prev => prev + 1); setBlankFeedback('correct'); }
-    else { setBlankFeedback('wrong'); }
+    if (option === currentQuestion.wordKey) {
+      setScore((prev) => prev + 1);
+      setBlankFeedback("correct");
+    } else {
+      setBlankFeedback("wrong");
+    }
 
     setTimeout(() => {
       setBlankFeedback(null);
@@ -338,7 +366,7 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
       if (currentQuestionIdx < gameQuestions.length - 1) {
         const nextIdx = currentQuestionIdx + 1;
         setCurrentQuestionIdx(nextIdx);
-        setBlankOptions(generateMultipleChoices(gameQuestions[nextIdx].wordKey, masterRegions).map(o => o.wordKey));
+        setBlankOptions(generateMultipleChoices(gameQuestions[nextIdx].wordKey, masterRegions).map((o) => o.wordKey));
         playSentenceAudios(gameQuestions[nextIdx].wordKey);
       } else {
         alert(`Game Over! 🎉 Final Score: ${score + (option === currentQuestion.wordKey ? 1 : 0)} / 5`);
@@ -351,16 +379,18 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
     e.stopPropagation();
     if (colorMagicFeedback) return;
     stopCurrentAudio();
-    setColorMagicFeedback('correct');
+    setColorMagicFeedback("correct");
     const currentWord = currentQuestion.wordKey;
-    if (!coloredWords.includes(currentWord)) { setColoredWords(prev => [...prev, currentWord]); }
+    if (!coloredWords.includes(currentWord)) {
+      setColoredWords((prev) => [...prev, currentWord]);
+    }
 
     setTimeout(() => {
       setColorMagicFeedback(null);
       if (currentQuestionIdx < gameQuestions.length - 1) {
         const nextIdx = currentQuestionIdx + 1;
         setCurrentQuestionIdx(nextIdx);
-        playAudio(currentQuestion.audioUrl);
+        playAudio(gameQuestions[nextIdx].audioUrl);
       } else {
         alert("Wonderful! 🎨 You brought all places to life with colors!");
         closeGameModal();
@@ -372,8 +402,8 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
     e.stopPropagation();
     if (gameFeedback) return;
     stopCurrentAudio();
-    setScore(prev => prev + 1);
-    setGameFeedback('correct');
+    setScore((prev) => prev + 1);
+    setGameFeedback("correct");
 
     setTimeout(() => {
       setGameFeedback(null);
@@ -386,6 +416,16 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
         closeGameModal();
       }
     }, 1500);
+  };
+
+  // FindPlaceModal 배경(오답) 클릭 시 실행
+  const handleBackgroundClick = () => {
+    if (gameFeedback !== null) return;
+    setGameFeedback("wrong");
+
+    setTimeout(() => {
+      setGameFeedback(null);
+    }, 1000);
   };
 
   const closeGameModal = () => {
@@ -436,82 +476,124 @@ export default function GameContainer({ placeData, placeImages }: GameContainerP
       </div>
 
       {/* ==================== 🛠️ 1~11번 모달 연동 허브 ==================== */}
-      {selectedGame && (currentQuestion || ['memory_cards', 'infinite_stairs', 'boss_challenge'].includes(selectedGame.gameKey)) && (
+      {selectedGame && (currentQuestion || ["memory_cards", "infinite_stairs", "boss_challenge"].includes(selectedGame.gameKey)) && (
         <>
-          {(selectedGame.gameKey === 'find_place' || selectedGame.gameKey === 'listen_find') && (
+          {(selectedGame.gameKey === "find_place" || selectedGame.gameKey === "listen_find") && (
             <FindPlaceModal
-              selectedGame={selectedGame} currentQuestion={currentQuestion} currentQuestionIdx={currentQuestionIdx}
-              score={score} isPlaying={isPlaying} gameFeedback={gameFeedback} triggerAudio={triggerAudio}
-              handleTargetClick={handleTargetClick} handleBackgroundClick={() => setGameFeedback('wrong')}
-              closeGameModal={closeGameModal} apartmentImg={bgImage}
+              selectedGame={selectedGame}
+              currentQuestion={currentQuestion}
+              currentQuestionIdx={currentQuestionIdx}
+              score={score}
+              isPlaying={isPlaying}
+              gameFeedback={gameFeedback}
+              triggerAudio={triggerAudio}
+              handleTargetClick={handleTargetClick}
+              handleBackgroundClick={handleBackgroundClick}
+              closeGameModal={closeGameModal}
+              apartmentImg={bgImage}
             />
           )}
 
-          {selectedGame.gameKey === 'color_magic' && (
+          {selectedGame.gameKey === "color_magic" && (
             <ColorMagicModal
-              currentQuestion={currentQuestion} currentQuestionIdx={currentQuestionIdx} gameQuestions={gameQuestions}
-              coloredWords={coloredWords} colorMagicFeedback={colorMagicFeedback} playAudio={playAudio}
-              handleColorMagicTargetClick={handleColorMagicTargetClick} handleColorMagicBackgroundClick={() => setColorMagicFeedback('wrong')}
-              closeGameModal={closeGameModal} masterRegions={masterRegions} apartmentImg={bgImage}
+              currentQuestion={currentQuestion}
+              currentQuestionIdx={currentQuestionIdx}
+              gameQuestions={gameQuestions}
+              coloredWords={coloredWords}
+              colorMagicFeedback={colorMagicFeedback}
+              playAudio={playAudio}
+              handleColorMagicTargetClick={handleColorMagicTargetClick}
+              handleColorMagicBackgroundClick={() => setColorMagicFeedback("wrong")}
+              closeGameModal={closeGameModal}
+              masterRegions={masterRegions}
+              apartmentImg={bgImage}
             />
           )}
 
-          {selectedGame.gameKey === 'fill_blank' && (
+          {selectedGame.gameKey === "fill_blank" && (
             <FillBlankModal
-              currentQuestion={currentQuestion} currentQuestionIdx={currentQuestionIdx} score={score}
-              blankOptions={blankOptions} blankFeedback={blankFeedback} selectedOption={selectedOption}
-              playSentenceAudios={playSentenceAudios} handleBlankOptionClick={handleBlankOptionClick} closeGameModal={closeGameModal}
-            />
-          )}
-
-          {selectedGame.gameKey === 'sentence_builder' && (
-            <SentenceBuilderModal
-              currentQuestion={currentQuestion} currentQuestionIdx={currentQuestionIdx}
-              assembledWords={assembledWords} shuffledChips={shuffledChips} builderFeedback={builderFeedback}
-              playSentenceAudios={playSentenceAudios} handleChipClick={handleChipClick} handleAssembledClick={handleAssembledClick}
+              currentQuestion={currentQuestion}
+              currentQuestionIdx={currentQuestionIdx}
+              score={score}
+              blankOptions={blankOptions}
+              blankFeedback={blankFeedback}
+              selectedOption={selectedOption}
+              playSentenceAudios={playSentenceAudios}
+              handleBlankOptionClick={handleBlankOptionClick}
               closeGameModal={closeGameModal}
             />
           )}
 
-          {selectedGame.gameKey === 'speed_match' && (
+          {selectedGame.gameKey === "sentence_builder" && (
+            <SentenceBuilderModal
+              currentQuestion={currentQuestion}
+              currentQuestionIdx={currentQuestionIdx}
+              assembledWords={assembledWords}
+              shuffledChips={shuffledChips}
+              builderFeedback={builderFeedback}
+              playSentenceAudios={playSentenceAudios}
+              handleChipClick={handleChipClick}
+              handleAssembledClick={handleAssembledClick}
+              closeGameModal={closeGameModal}
+            />
+          )}
+
+          {selectedGame.gameKey === "speed_match" && (
             <SpeedMatchModal
-              currentQuestion={currentQuestion} score={score} timeLeft={timeLeft} speedOptions={speedOptions}
-              speedFeedback={speedFeedback} selectedSpeedOption={selectedSpeedOption}
-              handleSpeedOptionClick={handleSpeedOptionClick} closeGameModal={closeGameModal}
+              currentQuestion={currentQuestion}
+              score={score}
+              timeLeft={timeLeft}
+              speedOptions={speedOptions}
+              speedFeedback={speedFeedback}
+              selectedSpeedOption={selectedSpeedOption}
+              handleSpeedOptionClick={handleSpeedOptionClick}
+              closeGameModal={closeGameModal}
             />
           )}
 
-          {selectedGame.gameKey === 'spelling_bee' && (
+          {selectedGame.gameKey === "spelling_bee" && (
             <SpellingCorrectModel
-              currentQuestion={currentQuestion} currentQuestionIdx={currentQuestionIdx} score={score}
-              closeGameModal={closeGameModal} onCorrectAnswer={handleModalSuccessFeedback} onWrongAnswer={() => {}}
+              currentQuestion={currentQuestion}
+              currentQuestionIdx={currentQuestionIdx}
+              score={score}
+              closeGameModal={closeGameModal}
+              onCorrectAnswer={handleModalSuccessFeedback}
+              onWrongAnswer={() => {}}
             />
           )}
 
-          {selectedGame.gameKey === 'memory_cards' && (
+          {selectedGame.gameKey === "memory_cards" && (
             <MemoryCardModal
-              masterRegions={masterRegions} closeGameModal={closeGameModal}
+              masterRegions={masterRegions}
+              closeGameModal={closeGameModal}
             />
           )}
 
-          {/* 🌟 PictureQuizModal - 개별 Prop 대신 통째로 다국적/다장소 이미지 Object를 넘김 */}
-          {selectedGame.gameKey === 'picture_quiz' && (
+          {selectedGame.gameKey === "picture_quiz" && (
             <PictureQuizModal
-              currentQuestion={currentQuestion} currentQuestionIdx={currentQuestionIdx} score={score}
-              closeGameModal={closeGameModal} optionsPool={masterRegions} onCorrectAnswer={handleModalSuccessFeedback}
-              onWrongAnswer={() => {}} placeImages={activePlaceImages} defaultImg={bgImage}
+              currentQuestion={currentQuestion}
+              currentQuestionIdx={currentQuestionIdx}
+              score={score}
+              closeGameModal={closeGameModal}
+              optionsPool={masterRegions}
+              onCorrectAnswer={handleModalSuccessFeedback}
+              onWrongAnswer={() => {}}
+              placeImages={activePlaceImages}
+              defaultImg={bgImage}
             />
           )}
 
-          {selectedGame.gameKey === 'infinite_stairs' && (
+          {selectedGame.gameKey === "infinite_stairs" && (
             <InfiniteStairsModal
-              masterRegions={masterRegions} closeGameModal={closeGameModal}
+              masterRegions={masterRegions}
+              closeGameModal={closeGameModal}
             />
           )}
 
-          {selectedGame.gameKey === 'boss_challenge' && (
+          {selectedGame.gameKey === "boss_challenge" && (
             <BossChallengeModal
-              masterRegions={masterRegions} closeGameModal={closeGameModal}
+              masterRegions={masterRegions}
+              closeGameModal={closeGameModal}
             />
           )}
         </>
