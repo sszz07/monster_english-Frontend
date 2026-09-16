@@ -27,11 +27,7 @@ export class GameImage {
   static readonly apartmentGameWall = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-house/apartment/images/Wall.jpg';
   static readonly apartmentGameWindow = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-house/apartment/images/Window.jpg';
  
-  // bathroom
-  // bedroom
-  // calendar
-  // family
-  // house
+ 
   
   static readonly houseGameAddress = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-house/house/images/Address.png';
   static readonly houseGameAttic = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-house/house/images/Attic.png';
@@ -62,5 +58,10 @@ export class GameImage {
   // livingroom
   // playground
   // recycling
+  // bathroom
+  // bedroom
+  // calendar
+  // family
+  // house
 
 }

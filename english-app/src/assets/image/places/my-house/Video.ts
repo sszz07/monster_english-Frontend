@@ -23,6 +23,7 @@ export class Video {
   static readonly apartmentVideoWalkingPath = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-house/apartment/video/walking_path.mp4';
   static readonly apartmentVideoWall = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-house/apartment/video/wall.mp4';
   static readonly apartmentVideoWindow = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-house/apartment/video/window.mp4';
+  
   // house video
   static readonly houseVideoAddress = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-house/house/video/Address.mp4';
   static readonly houseVideoAttic = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-house/house/video/Attic.mp4';
@@ -49,6 +50,8 @@ export class Video {
   static readonly houseVideoPatio = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-house/house/video/Patio.mp4';
   static readonly houseVideoSkylight = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-house/house/video/Skylight.mp4';
   static readonly houseVideoSprinkler = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-house/house/video/Sprinkler.mp4';
+  
+  
   // bathroom video
   // bedroom video
   // calendar video
