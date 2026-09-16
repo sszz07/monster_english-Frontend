@@ -1,4 +1,5 @@
-import bathroomImg from '@/assets/image/places/house/bathroom.png';
+import { ThemeImage } from "@/assets/image/places/my-house/ThemeImage";    
+const bathroomImg = ThemeImage.bathroom;
 
 export interface RegionData {
   wordKey: string;

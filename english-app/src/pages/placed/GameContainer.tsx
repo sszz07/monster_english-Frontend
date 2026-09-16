@@ -19,14 +19,15 @@ import {
   RegionData,
 } from "@/pages/placed/constants/my-house/my-house-data/ApartmentData";
 
+import { ThemeImage } from "@/assets/image/places/my-house/ThemeImage"; 
 // 🌟 확장성을 위한 전체 장소 이미지 맵
-import apartmentImg from "@/assets/image/places/house/apartment.png";
-import houseImg from "@/assets/image/places/house/house.png";
+const apartmentImage = ThemeImage.apartment;
+const houseImage = ThemeImage.house;
 
 // 장소 키(placeKey)별 이미지 레지스트리 맵
 const PLACE_IMAGES: Record<string, string> = {
-  apartment: apartmentImg,
-  house: houseImg,
+  apartment: apartmentImage,
+  house: houseImage,
 };
 
 // 🌟 1~11번 독립형 미니 게임 모달 컴포넌트 전체 임포트 벨트

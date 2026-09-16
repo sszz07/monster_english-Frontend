@@ -10,7 +10,4 @@ export class ThemeImage {
     static readonly livingroom = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-house/livingroom.png';
     static readonly playground = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-house/playground.png';
     static readonly recycling = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-house/recycling.png';
-
-    //my-town
-    static readonly bakery = 'https://moster-english-bucket.s3.ap-northeast-2.amazonaws.com/places/my-town/bakery.png'
 }

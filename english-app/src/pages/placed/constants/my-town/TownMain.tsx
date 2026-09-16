@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "@/components/common/Footer";
 
-import classroom from "@/assets/image/places/town/classroom.png";
-import cafeteria from "@/assets/image/places/town/Cafeteria.png";
-import busStop from "@/assets/image/places/town/Bus Stop.png";
-import subway from "@/assets/image/places/town/Subway.png";
-import crosswalk from "@/assets/image/places/town/Crosswalk.png";
-import stationeryShop from "@/assets/image/places/town/Stationery Shop.png";
-import bakery from "@/assets/image/places/town/Bakery.png";
-import supermarket from "@/assets/image/places/town/Supermarket.png";
-import pharmacy from "@/assets/image/places/town/Pharmacy.png";
-import hospital from "@/assets/image/places/town/Hospital.png";
+
+import { GameImage } from "@/assets/image/places/my-house/GameImage"; 
+const classroom = GameImage.houseGameAddress;
+const cafeteria = GameImage.houseGameAddress;
+const busStop = GameImage.houseGameAddress;
+const subway = GameImage.houseGameAddress;
+const crosswalk = GameImage.houseGameAddress;
+const stationeryShop = GameImage.houseGameAddress;
+const bakery = GameImage.houseGameAddress;
+const supermarket = GameImage.houseGameAddress;
+const pharmacy = GameImage.houseGameAddress;
+const hospital = GameImage.houseGameAddress;
 
 interface PlaceItem {
     id: number;

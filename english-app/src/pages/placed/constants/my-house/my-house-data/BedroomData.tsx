@@ -1,5 +1,6 @@
-import bedroomImg from '@/assets/image/places/house/bedroom.png';
 
+import { ThemeImage } from "@/assets/image/places/my-house/ThemeImage";    
+const bedroomImg = ThemeImage.bedroom;
 export interface RegionData {
   wordKey: string;
   korean: string;

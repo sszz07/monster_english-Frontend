@@ -1,5 +1,8 @@
-import playgroundImg from '@/assets/image/places/house/playground.png';
 
+
+
+import { ThemeImage } from "@/assets/image/places/my-house/ThemeImage";    
+const playgroundImg = ThemeImage.playground;
 export interface RegionData {
   wordKey: string;
   korean: string;

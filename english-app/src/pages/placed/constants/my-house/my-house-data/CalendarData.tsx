@@ -1,5 +1,6 @@
-import calendarImg from '@/assets/image/places/house/calendar.png';
 
+import { ThemeImage } from "@/assets/image/places/my-house/ThemeImage";    
+const calendarImg = ThemeImage.calendar;
 export interface RegionData {
   wordKey: string;
   korean: string;

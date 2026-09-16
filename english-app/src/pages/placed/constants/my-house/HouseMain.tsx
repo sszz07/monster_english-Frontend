@@ -7,18 +7,19 @@ import { ALL_PLACES_DATA, PlaceDataType } from "../index";
 // 🌟 2. 팩에 담긴 데이터를 주입받아 게임을 실구동할 컨테이너 임포트
 import AdventureContainer from "../../PlacesContainer";
 
-// 이미지 임포트
-import apartmentImg from "@/assets/image/places/house/apartment.png";
-import houseImg from "@/assets/image/places/house/house.png";
-import livingroomImg from "@/assets/image/places/house/livingroom.png";
-import kitchenImg from "@/assets/image/places/house/kitchen.png";
-import bathroomImg from "@/assets/image/places/house/bathroom.png";
-import bedroomImg from "@/assets/image/places/house/bedroom.png";
-import playgroundImg from "@/assets/image/places/house/playground.png";
-import recyclingImg from "@/assets/image/places/house/recycling.png";
-import calendarImg from "@/assets/image/places/house/calendar.png";
-import familyImg from "@/assets/image/places/house/family.png";
+import { ThemeImage } from "@/assets/image/places/my-house/ThemeImage"; 
 
+// 이미지 임포트
+const apartmentImage = ThemeImage.apartment;
+const houseImage = ThemeImage.house;
+const livingroomImage = ThemeImage.livingroom;
+const kitchenImage = ThemeImage.kitchen;
+const bathroomImage = ThemeImage.bathroom;
+const bedroomImage = ThemeImage.bedroom;
+const playgroundImage = ThemeImage.playground;
+const recyclingImage = ThemeImage.recycling;
+const calendarImage = ThemeImage.calendar;
+const familyImage = ThemeImage.family;
 // 데이터 매핑용 인터페이스 스펙 정의
 interface PlaceItem {
     id: number;
@@ -33,21 +34,22 @@ const HouseMain: React.FC = () => {
     const [activePlaceData, setActivePlaceData] = useState<PlaceDataType | null>(null);
 
     // 상단 라인(1~5) 데이터 정의
+  // 상단 라인(1~5) 데이터 정의
     const topPlaces: PlaceItem[] = [
-        { id: 1, name: "Apartment", img: apartmentImg, placeKey: "apartment" },
-        { id: 2, name: "House", img: houseImg, placeKey: "house" },
-        { id: 3, name: "Living Room", img: livingroomImg, placeKey: "livingroom" },
-        { id: 4, name: "Kitchen", img: kitchenImg, placeKey: "kitchen" },
-        { id: 5, name: "Bathroom", img: bathroomImg, placeKey: "bathroom" },
+        { id: 1, name: "Apartment", img: apartmentImage, placeKey: "apartment" },
+        { id: 2, name: "House", img: houseImage, placeKey: "house" },
+        { id: 3, name: "Living Room", img: livingroomImage, placeKey: "livingroom" },
+        { id: 4, name: "Kitchen", img: kitchenImage, placeKey: "kitchen" },
+        { id: 5, name: "Bathroom", img: bathroomImage, placeKey: "bathroom" },
     ];
 
     // 하단 라인(6~10) 데이터 정의
     const bottomPlaces: PlaceItem[] = [
-        { id: 6, name: "Bedroom", img: bedroomImg, placeKey: "bedroom" },
-        { id: 7, name: "Playground", img: playgroundImg, placeKey: "playground" },
-        { id: 8, name: "Recycling", img: recyclingImg, placeKey: "recycling" },
-        { id: 9, name: "Calendar", img: calendarImg, placeKey: "calendar" },
-        { id: 10, name: "Family", img: familyImg, placeKey: "family" },
+        { id: 6, name: "Bedroom", img: bedroomImage, placeKey: "bedroom" },
+        { id: 7, name: "Playground", img: playgroundImage, placeKey: "playground" },
+        { id: 8, name: "Recycling", img: recyclingImage, placeKey: "recycling" },
+        { id: 9, name: "Calendar", img: calendarImage, placeKey: "calendar" },
+        { id: 10, name: "Family", img: familyImage, placeKey: "family" },
     ];
 
     // 카드 클릭 시 index 보관함 조회를 담당하는 핸들러 함수

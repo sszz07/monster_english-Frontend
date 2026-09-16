@@ -4,7 +4,7 @@ import { getApartmentImageUrl, APARTMENT_IMAGE_ASSETS } from "./apartmentImages"
 import { getHouseImageUrl, HOUSE_IMAGE_ASSETS } from "./houseImages";
 
 export * from "./apartmentImages";
-export * from "./houseImages";
+// export * from "./houseImages";
 
 export type PlaceTheme = "apartment" | "house";
 

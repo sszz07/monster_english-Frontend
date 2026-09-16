@@ -1,5 +1,6 @@
-import familyImg from '@/assets/image/places/house/family.png';
 
+import { ThemeImage } from "@/assets/image/places/my-house/ThemeImage";    
+const familyImg = ThemeImage.family;
 export interface RegionData {
   wordKey: string;
   korean: string;

@@ -278,7 +278,6 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
                 src={videoTarget.videoPath} 
                 controls 
                 autoPlay 
-                muted        // 👈 자동재생 차단 방지
                 playsInline  // 👈 인라인 재생
                 onEnded={() => setClickedSet(p => new Set(p).add(videoTarget.wordKey))} 
                 className="w-full h-full object-contain" 

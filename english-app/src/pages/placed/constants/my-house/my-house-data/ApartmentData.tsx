@@ -1,5 +1,6 @@
 /***/
-import apartmentImg from '@/assets/image/places/house/apartment.png';
+import { ThemeImage } from "@/assets/image/places/my-house/ThemeImage";    
+const apartmentImg = ThemeImage.apartment;
 
 // 🌟 TypeScript 타입 안정성을 위한 장소 데이터 인터페이스 정의
 export interface RegionData {

@@ -1,6 +1,5 @@
-import recyclingAreaImg from '@/assets/image/places/house/recycling.png';
-
-
+import { ThemeImage } from "@/assets/image/places/my-house/ThemeImage";    
+const recyclingAreaImg = ThemeImage.recycling;
 export interface RegionData {
   wordKey: string;
   korean: string;

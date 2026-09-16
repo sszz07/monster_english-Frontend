@@ -1,5 +1,7 @@
-import livingRoomImg from '@/assets/image/places/house/livingroom.png';
 
+
+import { ThemeImage } from "@/assets/image/places/my-house/ThemeImage";    
+const livingRoomImg = ThemeImage.livingroom;
 export interface RegionData {
   wordKey: string;
   korean: string;

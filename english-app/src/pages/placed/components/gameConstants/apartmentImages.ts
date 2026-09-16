@@ -1,30 +1,34 @@
 // src/constants/apartmentImages.ts
+import {  } from "@/assets/image/places/my-house/ThemeImage"; 
 
-import balconyImg from "@/assets/image/places/game/apartment/Balcony.png";
-import basementImg from "@/assets/image/places/game/apartment/Basement.png";
-import buildingImg from "@/assets/image/places/game/apartment/Building.png";
-import columnImg from "@/assets/image/places/game/apartment/Column.png";
-import elevatorImg from "@/assets/image/places/game/apartment/Elevator.png";
-import entranceImg from "@/assets/image/places/game/apartment/Entrance.png";
-import gardenImg from "@/assets/image/places/game/apartment/Garden.png";
-import gymImg from "@/assets/image/places/game/apartment/Gym.png";
-import hallwayImg from "@/assets/image/places/game/apartment/Hallway.png";
-import intercormImg from "@/assets/image/places/game/apartment/Intercorm.png";
-import loadingZoneImg from "@/assets/image/places/game/apartment/Loading zone.png";
-import lobbyImg from "@/assets/image/places/game/apartment/Lobby.png";
-import logoImg from "@/assets/image/places/game/apartment/logo.png";
-import mailboxImg from "@/assets/image/places/game/apartment/Mailbox.png";
-import parkingLotImg from "@/assets/image/places/game/apartment/Parking lot.png";
-import playgroundImg from "@/assets/image/places/game/apartment/Playground.png";
-import recyclingAreaImg from "@/assets/image/places/game/apartment/Recycling area.png";
-import rooftopImg from "@/assets/image/places/game/apartment/Rooftop.png";
-import securityOfficeImg from "@/assets/image/places/game/apartment/Security office.png";
-import stairsImg from "@/assets/image/places/game/apartment/Stairs.png";
-import terraceImg from "@/assets/image/places/game/apartment/Terrace.png";
-import unitImg from "@/assets/image/places/game/apartment/Unit.png";
-import walkingPathImg from "@/assets/image/places/game/apartment/Walking path.png";
-import wallImg from "@/assets/image/places/game/apartment/Wall.png";
-import windowImg from "@/assets/image/places/game/apartment/Window.png";
+import { GameImage } from "@/assets/image/places/my-house/GameImage"; 
+
+ 
+const balconyImg = GameImage.apartmentGameBalcony;
+const basementImg = GameImage.apartmentGameBasement;
+const buildingImg = GameImage.apartmentGameBuilding;
+const columnImg = GameImage.apartmentGameColumn;
+const elevatorImg = GameImage.apartmentGameElevator;
+const entranceImg = GameImage.apartmentGameEntrance;
+const gardenImg = GameImage.apartmentGameGarden;
+const gymImg = GameImage.apartmentGameGym;
+const hallwayImg = GameImage.apartmentGameHallway;
+const intercormImg = GameImage.apartmentGameIntercorm;
+const loadingZoneImg = GameImage.apartmentGameLoadingZone;
+const lobbyImg = GameImage.apartmentGameLobby;
+const logoImg = GameImage.apartmentGameLogo;
+const mailboxImg = GameImage.apartmentGameMailbox;
+const parkingLotImg = GameImage.apartmentGameParkinglot;
+const playgroundImg = GameImage.apartmentGamePlayground;
+const recyclingAreaImg = GameImage.apartmentGameRecyclingArea;
+const rooftopImg = GameImage.apartmentGameRooftop;
+const securityOfficeImg = GameImage.apartmentGameSecurityOffice;
+const stairsImg = GameImage.apartmentGameStairs;
+const terraceImg = GameImage.apartmentGameTerrace;
+const unitImg = GameImage.apartmentGameUnit;
+const walkingPathImg = GameImage.apartmentGameWalkingPath;
+const wallImg = GameImage.apartmentGameWall;
+const windowImg = GameImage.apartmentGameWindow;
 
 /**
  * 아파트 테마 이미지 매핑 상수

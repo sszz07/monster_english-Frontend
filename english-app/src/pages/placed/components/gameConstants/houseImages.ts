@@ -1,30 +1,30 @@
 // src/gameConstants/houseImages.ts
-
-import addressImg from "@/assets/image/places/game/house/Address.png";
-import atticImg from "@/assets/image/places/game/house/Attic.png";
-import awningImg from "@/assets/image/places/game/house/Awning.png";
-import bathroomImg from "@/assets/image/places/game/house/Bathroom.png";
-import bedroomImg from "@/assets/image/places/game/house/Bedroom.png";
-import cellarImg from "@/assets/image/places/game/house/Cellar.png";
-import chimneyImg from "@/assets/image/places/game/house/Chimney.png";
-import deckImg from "@/assets/image/places/game/house/Deck.png";
-import doorImg from "@/assets/image/places/game/house/Door.png";
-import doorbellImg from "@/assets/image/places/game/house/Doorbell.png";
-import doorknobImg from "@/assets/image/places/game/house/Doorknob.png";
-import drivewayImg from "@/assets/image/places/game/house/Driveway.png";
-import fenceImg from "@/assets/image/places/game/house/Fence.png";
-import flowerbedImg from "@/assets/image/places/game/house/Flowerbed.png";
-import gateImg from "@/assets/image/places/game/house/Gate.png";
-import kitchenImg from "@/assets/image/places/game/house/Kitchen.png";
-import ladderImg from "@/assets/image/places/game/house/Ladder.png";
-import laundryRoomImg from "@/assets/image/places/game/house/Laundry room.png";
-import lawnImg from "@/assets/image/places/game/house/Lawn.png";
-import livingRoomImg from "@/assets/image/places/game/house/Living room.png";
-import mailboxImg from "@/assets/image/places/game/house/Mailbox.png";
-import pantryImg from "@/assets/image/places/game/house/Pantry.png";
-import patioImg from "@/assets/image/places/game/house/Patio.png";
-import skylightImg from "@/assets/image/places/game/house/Skylight.png";
-import sprinklerImg from "@/assets/image/places/game/house/Sprinkler.png";
+import { GameImage } from "@/assets/image/places/my-house/GameImage"; 
+const addressImg = GameImage.houseGameAddress;
+const atticImg = GameImage.houseGameAttic;
+const awningImg = GameImage.houseGameAwning;
+const bathroomImg = GameImage.houseGameBathroom;
+const bedroomImg = GameImage.houseGameBedroom;
+const cellarImg = GameImage.houseGameCellar;
+const chimneyImg = GameImage.houseGameChimney;
+const deckImg = GameImage.houseGameDeck;
+const doorImg = GameImage.houseGameDoor;
+const doorbellImg = GameImage.houseGameDoorbell;
+const doorknobImg = GameImage.houseGameDoorknob;
+const drivewayImg = GameImage.houseGameDriveway;
+const fenceImg = GameImage.houseGameFence;
+const flowerbedImg = GameImage.houseGameFlowerbed;
+const gateImg = GameImage.houseGameGate;
+const kitchenImg = GameImage.houseGameKitchen;
+const ladderImg = GameImage.houseGameLadder;
+const laundryRoomImg = GameImage.houseGameLaundryRoom;
+const lawnImg = GameImage.houseGameLawn;
+const livingRoomImg = GameImage.houseGameLivingRoom;
+const mailboxImg = GameImage.houseGameMailbox;
+const pantryImg = GameImage.houseGameMailbox;
+const patioImg = GameImage.houseGamePatio;
+const skylightImg = GameImage.houseGameSkylight;
+const sprinklerImg = GameImage.houseGameSprinkler;
 
 /**
  * 주택(House) 테마 이미지 매핑 상수
