@@ -2,6 +2,7 @@ import { CircleUserRound, LucideLogOut, Menu, X } from 'lucide-react';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUserStore } from '../../store/userStore';
+import  logo  from '@/assets/image/logo.png';
 
 const Header = () => {
     // isLoggedIn, logout과 함께 user 객체 구조분해 할당
@@ -36,7 +37,7 @@ const Header = () => {
             <div className="flex-shrink-0">
                 <Link to="/" onClick={closeMenu} className='flex items-end gap-4'>
                     <img
-                        src="/logo.png"
+                        src={logo}
                         alt="MonsterEdu"
                         className="w-[100px] h-[70px] object-contain"
                     />
