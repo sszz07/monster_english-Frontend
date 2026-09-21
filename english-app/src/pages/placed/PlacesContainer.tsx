@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 
 // 타입 임포트 (필요 시 경로 확인)
-import type { PlaceDataType, RegionData } from "@/pages/placed/constants/my-house/my-house-data/ApartmentData";
+import type { PlaceDataType } from "@/pages/placed/constants/my-house/my-house-data/types";
+import type { RegionData } from "@/pages/placed/constants/my-house/my-house-data/types";
 
 // 1. 데이터 및 타입 임포트 (총 10개 장소 데이터)
 import { apartmentData } from "@/pages/placed/constants/my-house/my-house-data/ApartmentData";
@@ -23,11 +24,11 @@ interface AdventureContainerProps {
 }
 
 // 🌟 장소 선택 타입 정의 (총 10개 장소 키)
-type PlaceType = 
-  | "apartment" 
-  | "house" 
-  | "kitchen" 
-  | "livingroom" 
+type PlaceType =
+  | "apartment"
+  | "house"
+  | "kitchen"
+  | "livingroom"
   | "bathroom"
   | "bedroom"
   | "playground"
@@ -69,9 +70,11 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
   const currentAudioRef = useRef<HTMLAudioElement | null>(null);
   const bubbleTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const totalWords = masterRegions.length;
-
-  // 🔄 장소 전환 시 이전 상태 클리어
+  
+  const totalWords = masterRegions.length; // 총 단어 갯수
+  const clickedCount = clickedSet.size; // 내가 클릭 한 단어 갯수
+  const isGameUnlocked = clickedCount >= totalWords && totalWords > 0; // 내가 클릭한 단어 갯수가 더 크거나 총단어갯수보다 같거나 크면 게임모드 오픈
+  //  장소 전환 시 이전 상태 클리어
   const handlePlaceChange = (key: PlaceType) => {
     stopCurrentAudio();
     setSelectedPlaceKey(key);
@@ -96,7 +99,7 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
     if (!wordKey) return;
     // 🌟 안전하게 소문자 변환 적용
     const cleanTargetId = wordKey.replace(/_/g, "").toLowerCase();
-    
+
     const folderName = `${placeData.placeKey}Sentence`;
     const firstAudio = new Audio(`/audio/${folderName}/${cleanTargetId}1.mp3`);
     currentAudioRef.current = firstAudio;
@@ -106,13 +109,13 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
         firstAudio.onended = () => {
           const secondAudio = new Audio(`/audio/${folderName}/${cleanTargetId}2.mp3`);
           currentAudioRef.current = secondAudio;
-          secondAudio.play().catch(() => {});
+          secondAudio.play().catch(() => { });
           secondAudio.onended = () => {
             currentAudioRef.current = null;
           };
         };
       })
-      .catch(() => {});
+      .catch(() => { });
   };
 
   // ==================== 🔍 EXPLORER MODE 전용 핸들러 ====================
@@ -161,8 +164,8 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-start pb-16 w-full relative"
-         style={{ background: "radial-gradient(1200px 500px at 50% -10%, #BFE8F7 0%, transparent 60%), linear-gradient(180deg, #A7DCF0 0%, #C9EAD3 48%, #B4E09A 100%)" }}>
-      
+      style={{ background: "radial-gradient(1200px 500px at 50% -10%, #BFE8F7 0%, transparent 60%), linear-gradient(180deg, #A7DCF0 0%, #C9EAD3 48%, #B4E09A 100%)" }}>
+
       {/* 1. 장소 선택 토글 버튼 (총 10개 장소) */}
       <div className="pt-8 flex gap-2.5 z-20 flex-wrap justify-center max-w-[1100px] px-4">
         {[
@@ -180,11 +183,10 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
           <button
             key={item.key}
             onClick={() => handlePlaceChange(item.key as PlaceType)}
-            className={`px-4 py-2 rounded-full font-black text-xs shadow-md transition-all ${
-              selectedPlaceKey === item.key
-                ? "bg-[#2E7D32] text-white scale-105 border-2 border-white"
-                : "bg-white/80 text-emerald-800 hover:bg-white"
-            }`}
+            className={`px-4 py-2 rounded-full font-black text-xs shadow-md transition-all ${selectedPlaceKey === item.key
+              ? "bg-[#2E7D32] text-white scale-105 border-2 border-white"
+              : "bg-white/80 text-emerald-800 hover:bg-white"
+              }`}
           >
             {item.label}
           </button>
@@ -199,7 +201,24 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
       {/* 모드 전환 탭 토글러 */}
       <div className="flex gap-4 bg-white/40 backdrop-blur-md p-1.5 rounded-full shadow-inner border border-white/40 mb-8">
         <button onClick={() => { stopCurrentAudio(); setCurrentMode("explore"); }} className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-extrabold text-base transition-all duration-300 ${currentMode === "explore" ? "bg-[#4CAF50] text-white shadow-md scale-105" : "text-emerald-800 hover:bg-white/30"}`}>🔍 Explorer</button>
-        <button onClick={() => { stopCurrentAudio(); setCurrentMode("game"); }} className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-extrabold text-base transition-all duration-300 ${currentMode === "game" ? "bg-[#4CAF50] text-white shadow-md scale-105" : "text-emerald-800 hover:bg-white/30"}`}>🎮 Game Mode</button>
+        <button
+          disabled={!isGameUnlocked}
+          onClick={() => {
+            stopCurrentAudio();
+            setCurrentMode("game");
+          }}
+          className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-extrabold text-base transition-all duration-300 ${!isGameUnlocked
+              ? "bg-gray-300 text-gray-500 cursor-not-allowed opacity-60"
+              : currentMode === "game"
+                ? "bg-[#4CAF50] text-white shadow-md scale-105"
+                : "text-emerald-800 hover:bg-white/30"
+            }`}
+        >
+          {isGameUnlocked
+            ? "🎮 Game Mode"
+            : `🔒 Game Mode (${clickedCount}/${totalWords})`}
+        </button>
+
       </div>
 
       {/* ==================== 1. EXPLORER MODE ==================== */}
@@ -207,7 +226,7 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
         <div className="w-full max-w-[1000px] bg-[#FFFBF0] rounded-[40px] shadow-2xl p-6 border-8 border-white flex flex-col gap-4 relative">
           <div className="relative aspect-[16/9] rounded-[30px] border border-gray-100 overflow-hidden shadow-inner bg-gray-100">
             <img src={bgImage} alt="Base Map" className={`w-full h-full object-cover select-none transition-all duration-300 ${hintOn ? "brightness-[0.2] blur-[1px]" : "brightness-100"}`} />
-            
+
             {/* SVG 폴리곤 맵 오버레이 */}
             <svg viewBox="0 0 160 90" className="absolute inset-0 w-full h-full">
               {masterRegions.map((region) => {
@@ -231,8 +250,8 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
             {currentExploreWord && showBubble && (
               <div className="absolute z-30 pointer-events-auto" style={{ left: `${centerCoords.x}%`, top: `${centerCoords.y}%` }}>
                 <div className="bg-white px-4 py-2 rounded-xl shadow-xl border-[3px] border-[#7CB342] -translate-x-1/2 -translate-y-[130%] cursor-pointer whitespace-nowrap"
-                     onClick={() => { setVideoTarget(currentExploreWord); setShowBubble(false); }}>
-                  <span className="text-[#388E3C] font-black tracking-wide text-base">{currentExploreWord.wordKey.replace(/_/g, " ")} 🎬</span>
+                  onClick={() => { setVideoTarget(currentExploreWord); setShowBubble(false); }}>
+                  <span className="text-[#388E3C] font-black tracking-wide text-base">{currentExploreWord.wordKey.replace(/_/g, " ")}</span>
                 </div>
               </div>
             )}
@@ -245,8 +264,22 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
               <span className="text-xs font-bold text-gray-500">Voca Progress: {clickedSet.size} / {totalWords}</span>
             </div>
             <div className="flex gap-3">
-              <button onClick={() => setHintOn(!hintOn)} className={`font-black text-sm px-5 py-3 rounded-xl shadow-sm ${hintOn ? "bg-amber-500 text-white" : "bg-white text-amber-600 border border-amber-200"}`}>{hintOn ? "💡 Hint On" : "✨ Hint"}</button>
-              <button onClick={() => { stopCurrentAudio(); setCurrentMode("game"); }} className="font-black text-sm px-6 py-3 rounded-xl shadow-sm bg-gradient-to-r from-amber-500 to-orange-500 text-white animate-bounce">Game Ready</button>
+              <button onClick={() => setHintOn(!hintOn)} className={`font-black text-sm px-5 py-3 rounded-xl shadow-sm ${hintOn ? "bg-amber-500 text-white" : "bg-white text-amber-600 border border-amber-200"}`}>{hintOn ? "💡  On" : "✨ Hint"}</button>
+              <button
+                disabled={!isGameUnlocked} 
+                onClick={() => {
+                  stopCurrentAudio();
+                  setCurrentMode("game");
+                }}
+                className={`font-black text-sm px-6 py-3 rounded-xl shadow-sm transition-all ${isGameUnlocked
+                    ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white animate-bounce cursor-pointer"
+                    : "bg-gray-300 text-gray-500 cursor-not-allowed shadow-none opacity-60"
+                  }`}
+              >
+                {isGameUnlocked
+                  ? "🎮 Game Ready"
+                  : `🔒 Locked (${clickedCount}/${totalWords})`}
+              </button>
             </div>
           </div>
         </div>
@@ -263,24 +296,24 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
           <div className="bg-[#FFFBF0] rounded-[40px] border-8 border-white p-6 max-w-3xl w-full flex flex-col gap-4">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-black text-[#4B9343] capitalize">{videoTarget.wordKey.replace(/_/g, " ")}</h2>
-              <button 
+              <button
                 onClick={() => {
                   stopCurrentAudio(); // 👈 닫을 때 오디오 정지
                   setVideoTarget(null);
-                }} 
+                }}
                 className="w-8 h-8 rounded-full border flex items-center justify-center font-bold text-gray-400 bg-white shadow-sm hover:text-black"
               >
                 ✕
               </button>
             </div>
             <div className="aspect-[16/9] bg-black rounded-2xl overflow-hidden shadow-inner">
-              <video 
-                src={videoTarget.videoPath} 
-                controls 
-                autoPlay 
+              <video
+                src={videoTarget.videoPath}
+                controls
+                autoPlay
                 playsInline  // 👈 인라인 재생
-                onEnded={() => setClickedSet(p => new Set(p).add(videoTarget.wordKey))} 
-                className="w-full h-full object-contain" 
+                onEnded={() => setClickedSet(p => new Set(p).add(videoTarget.wordKey))}
+                className="w-full h-full object-contain"
               />
             </div>
             {/* 오디오 가이드 문장 리스트 */}
