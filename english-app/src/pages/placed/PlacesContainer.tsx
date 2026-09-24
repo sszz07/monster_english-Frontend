@@ -202,13 +202,13 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
       <div className="flex gap-4 bg-white/40 backdrop-blur-md p-1.5 rounded-full shadow-inner border border-white/40 mb-8">
         <button onClick={() => { stopCurrentAudio(); setCurrentMode("explore"); }} className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-extrabold text-base transition-all duration-300 ${currentMode === "explore" ? "bg-[#4CAF50] text-white shadow-md scale-105" : "text-emerald-800 hover:bg-white/30"}`}>🔍 Explorer</button>
         <button
-          disabled={!isGameUnlocked}
+          // disabled={!isGameUnlocked}
           onClick={() => {
             stopCurrentAudio();
             setCurrentMode("game");
           }}
-          className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-extrabold text-base transition-all duration-300 ${!isGameUnlocked
-              ? "bg-gray-300 text-gray-500 cursor-not-allowed opacity-60"
+          className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-extrabold text-base transition-all duration-300 
+              "bg-gray-300 text-gray-500 cursor-not-allowed opacity-60"
               : currentMode === "game"
                 ? "bg-[#4CAF50] text-white shadow-md scale-105"
                 : "text-emerald-800 hover:bg-white/30"

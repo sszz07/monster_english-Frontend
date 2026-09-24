@@ -183,7 +183,7 @@ export const apartmentData: PlaceDataType = {
       videoPath: "/video/apartment/unit.mp4",
       sentenceFirstAudioUrl: "/audio/apartment/unit-sentence.mp3",
       sentenceSecondAudioUrl: "/audio/apartment/unit-sentence2.mp3",
-      sentence: "I live in unit 101. My unit is cozy.",
+      sentence: "I live in unit 201. My unit is cozy.",
       imageType: "apartment",
       targetStyle: { top: '2.0%', left: '12.0%', width: '8.5%', height: '17.0%' },
       points: "19.2,1.8 32.8,1.8 32.8,17.1 19.2,17.1"
@@ -303,7 +303,7 @@ export const apartmentData: PlaceDataType = {
       videoPath: "/video/apartment/stairs.mp4",
       sentenceFirstAudioUrl: "/audio/apartment/stairs-sentence.mp3",
       sentenceSecondAudioUrl: "/audio/apartment/stairs-sentence2.mp3",
-      sentence: "He is going up the stairs.",
+      sentence: "I go up the stairs. The stairs are long.",
       imageType: "apartment",
       targetStyle: { top: '60.0%', left: '67.5%', width: '7.0%', height: '6.0%' },
       points: "108.0,54.0 119.2,54.0 119.2,59.4 108.0,59.4"
@@ -327,7 +327,7 @@ export const apartmentData: PlaceDataType = {
       videoPath: "/video/apartment/walking_path.mp4",
       sentenceFirstAudioUrl: "/audio/apartment/walking_path-sentence.mp3",
       sentenceSecondAudioUrl: "/audio/apartment/walking_path-sentence2.mp3",
-      sentence: "I walk on the walking path.",
+      sentence: "I walk in the walking path. The walking path is long.",
       imageType: "apartment",
       targetStyle: { top: '81.0%', left: '25.0%', width: '27.0%', height: '16.0%' },
       points: "52.0,72.9 83.2,72.9 74.4,87.3 40.0,87.3"
