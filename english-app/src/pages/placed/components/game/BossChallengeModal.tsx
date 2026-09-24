@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Trophy, Volume2, X } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { Trophy, Volume2, X, Heart, Shield, RotateCcw, Flame } from "lucide-react";
 
 interface BossChallengeModalProps {
   masterRegions: any[];
@@ -7,120 +7,303 @@ interface BossChallengeModalProps {
 }
 
 export default function BossChallengeModal({ masterRegions, closeGameModal }: BossChallengeModalProps) {
-  const [questions, setGameQuestions] = useState<any[]>([]);
-  const [currentIdx, setCurrentIdx] = useState(0);
-  const [score, setScore] = useState(0);
-  const [options, setOptions] = useState<string[]>([]);
-  const [feedback, setFeedback] = useState<"correct" | "wrong" | null>(null);
-  const [selectedOpt, setSelectedOption] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (masterRegions.length === 0) return;
-    // 무작위 10문제를 조립식 풀에서 서칭 및 셔플링
-    const shuffledPool = [...masterRegions].sort(() => 0.5 - Math.random()).slice(0, 10);
-    const generated = shuffledPool.map((item) => {
-      const baseSentence = `I found the ${item.wordKey.replace(/_/g, " ")} in the building.`;
-      return {
-        wordKey: item.wordKey,
-        audioUrl: item.audioUrl,
-        sentence: baseSentence,
-        blankSentence: baseSentence.replace(new RegExp(`\\b${item.wordKey.replace(/_/g, " ")}\\b`, "gi"), "______")
-      };
-    });
-    setGameQuestions(generated);
-    setCurrentIdx(0);
-    setScore(0);
-    setupStep(generated[0], masterRegions);
+  const wordPool = React.useMemo(() => {
+    return Array.isArray(masterRegions) ? masterRegions.slice(0, 10) : [];
   }, [masterRegions]);
 
-  const setupStep = (currentQ: any, pool: any[]) => {
-    const correct = currentQ.wordKey;
-    const choices = [correct];
-    const filtered = pool.filter((p) => p.wordKey !== correct).sort(() => 0.5 - Math.random());
+  const MAX_BOSS_HP = 100;
+  const ATTACK_TIMER_MS = 4500;
+
+  const [bossHp, setBossHp] = useState(MAX_BOSS_HP);
+  const [playerHearts, setPlayerHearts] = useState(3);
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [questions, setQuestions] = useState<any[]>([]);
+  const [options, setOptions] = useState<any[]>([]);
+  const [feedback, setFeedback] = useState<"deflect" | "hit" | null>(null);
+  const [gameState, setGameState] = useState<"playing" | "victory" | "gameover">("playing");
+  const [timerProgress, setTimerProgress] = useState(0);
+
+  // 실행 중 중복 피격/반사 방지 플래그
+  const isProcessingRef = useRef(false);
+  const timeoutTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // 게임 초기화
+  const initGame = () => {
+    if (wordPool.length === 0) return;
+    const shuffled = [...wordPool].sort(() => 0.5 - Math.random());
+    setQuestions(shuffled);
+    setCurrentIdx(0);
+    setBossHp(MAX_BOSS_HP);
+    setPlayerHearts(3);
+    setGameState("playing");
+    setFeedback(null);
+    setTimerProgress(0);
+    isProcessingRef.current = false;
+    setupRound(shuffled[0], wordPool);
+  };
+
+  useEffect(() => {
+    initGame();
+    return () => {
+      if (timeoutTimerRef.current) clearTimeout(timeoutTimerRef.current);
+    };
+  }, [wordPool]);
+
+  // 라운드별 보기 세팅
+  const setupRound = (currentWord: any, pool: any[]) => {
+    if (!currentWord) return;
+    isProcessingRef.current = false;
+    setFeedback(null);
+    setTimerProgress(0);
+
+    const choices = [currentWord];
+    const wrongList = pool.filter((w) => w.wordKey !== currentWord.wordKey).sort(() => 0.5 - Math.random());
     for (let i = 0; i < 3; i++) {
-      if (filtered[i]) choices.push(filtered[i].wordKey);
+      if (wrongList[i]) choices.push(wrongList[i]);
     }
     setOptions(choices.sort(() => 0.5 - Math.random()));
-    setSelectedOption(null);
-    setFeedback(null);
-    new Audio(currentQ.audioUrl).play().catch(() => {});
-  };
 
-  const handleOptionClick = (option: string) => {
-    if (feedback) return;
-    setSelectedOption(option);
-    const curQ = questions[currentIdx];
-
-    if (option === curQ.wordKey) {
-      setScore((prev) => prev + 1);
-      setFeedback("correct");
-    } else {
-      setFeedback("wrong");
+    if (currentWord.audioUrl) {
+      new Audio(currentWord.audioUrl).play().catch(() => {});
     }
-
-    setTimeout(() => {
-      if (currentIdx < questions.length - 1) {
-        const nextIdx = currentIdx + 1;
-        setCurrentIdx(nextIdx);
-        setupStep(questions[nextIdx], masterRegions);
-      } else {
-        alert(`Boss Challenge Finished! 🏆\nYour Ultimate Score: ${score + (option === curQ.wordKey ? 1 : 0)} / 10`);
-        closeGameModal();
-      }
-    }, 1500);
   };
 
-  if (questions.length === 0) return null;
+  // 🌟 실시간 탄환 이동 타이머 (상태 업데이터 밖에서 안전하게 처리)
+  useEffect(() => {
+    if (gameState !== "playing" || feedback !== null || questions.length === 0) return;
+
+    const startTime = Date.now();
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const progress = (elapsed / ATTACK_TIMER_MS) * 100;
+
+      if (progress >= 100) {
+        clearInterval(interval);
+        setTimerProgress(100);
+        handleTimeOut();
+      } else {
+        setTimerProgress(progress);
+      }
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [currentIdx, gameState, feedback, questions]);
+
+  // 시간 초과 시 피격
+  const handleTimeOut = () => {
+    if (isProcessingRef.current) return;
+    applyDamageToPlayer();
+  };
+
+  // 🌟 피격 처리 (중복 방지 및 안전한 인덱스 전환)
+  const applyDamageToPlayer = () => {
+    if (isProcessingRef.current) return;
+    isProcessingRef.current = true;
+
+    setFeedback("hit");
+    const nextHearts = playerHearts - 1;
+    setPlayerHearts(nextHearts);
+
+    timeoutTimerRef.current = setTimeout(() => {
+      if (nextHearts <= 0) {
+        setGameState("gameover");
+      } else {
+        const nextIdx = (currentIdx + 1) % questions.length;
+        setCurrentIdx(nextIdx);
+        setupRound(questions[nextIdx], wordPool);
+      }
+    }, 900);
+  };
+
+  // 실드 선택
+  const handleShieldSelect = (selectedWordKey: string) => {
+    if (isProcessingRef.current || feedback !== null || gameState !== "playing") return;
+
+    const currentQ = questions[currentIdx];
+    if (!currentQ) return;
+
+    const isCorrect = selectedWordKey === currentQ.wordKey;
+
+    if (isCorrect) {
+      isProcessingRef.current = true;
+      setFeedback("deflect");
+      const nextHp = Math.max(0, bossHp - 20);
+      setBossHp(nextHp);
+
+      timeoutTimerRef.current = setTimeout(() => {
+        if (nextHp <= 0) {
+          setGameState("victory");
+        } else {
+          const nextIdx = (currentIdx + 1) % questions.length;
+          setCurrentIdx(nextIdx);
+          setupRound(questions[nextIdx], wordPool);
+        }
+      }, 900);
+    } else {
+      applyDamageToPlayer();
+    }
+  };
+
+  // 데이터 검증 및 방어 코드
+  if (questions.length === 0 || !questions[currentIdx]) return null;
   const currentQ = questions[currentIdx];
 
+  const cleanWord = (currentQ.wordKey || "").replace(/_/g, " ");
+  const sentenceDisplay = currentQ.sentence
+    ? currentQ.sentence.replace(new RegExp(`\\b${cleanWord}\\b`, "gi"), "_______")
+    : `Find: [ ${cleanWord.slice(0, 2)}... ]`;
+
   return (
-    <div className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50 p-4">
-      <div className="bg-[#FFFDF6] rounded-[2.5rem] border-8 border-amber-400 shadow-2xl max-w-3xl w-full p-6 flex flex-col gap-4 relative">
-        <div className="flex justify-between items-start">
+    <div className="fixed inset-0 bg-slate-950/85 backdrop-blur-md flex items-center justify-center z-50 p-4">
+      <div className="bg-slate-900 border-4 border-amber-500/80 rounded-3xl w-full max-w-2xl p-6 flex flex-col gap-4 shadow-2xl relative text-white overflow-hidden">
+        
+        {/* 상단 헤더 */}
+        <div className="flex justify-between items-center border-b border-slate-800 pb-3">
           <div className="flex items-center gap-2">
-            <Trophy className="w-7 h-7 text-amber-500 animate-bounce" />
-            <div>
-              <h2 className="text-2xl font-black text-amber-600 font-sans">Boss Ultimate Challenge</h2>
-              <p className="text-xs text-gray-400 font-semibold font-sans">Clear 10 extreme hidden combination quizzes to conquer this theme!</p>
+            <Shield className="w-6 h-6 text-cyan-400" />
+            <h2 className="text-xl font-black text-cyan-400 tracking-wider">WORD SHIELD BREAKER</h2>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-1">
+              {[...Array(3)].map((_, i) => (
+                <Heart
+                  key={i}
+                  className={`w-6 h-6 ${
+                    i < playerHearts ? "text-rose-500 fill-rose-500 drop-shadow" : "text-slate-700"
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={closeGameModal}
+              className="text-gray-400 hover:text-white p-1 rounded-full hover:bg-slate-800"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+
+        {/* 보스 상태 및 체력 바 */}
+        <div className="flex flex-col items-center gap-1 bg-slate-800/90 p-3 rounded-2xl border border-slate-700">
+          <div className="flex items-center gap-3">
+            <span className={`text-4xl transition-transform ${feedback === "deflect" ? "scale-125 rotate-12" : ""}`}>
+              🐲
+            </span>
+            <div className="text-left">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Dread Dragon Boss</span>
+              <p className="text-xs text-rose-400 font-extrabold">HP {bossHp} / {MAX_BOSS_HP}</p>
             </div>
           </div>
-          <button onClick={closeGameModal} className="text-gray-400 hover:text-gray-600 bg-gray-100 p-1.5 rounded-full"><X className="w-5 h-5" /></button>
+          <div className="w-full bg-slate-950 h-4 rounded-full overflow-hidden border border-slate-700 relative mt-1">
+            <div
+              className="bg-gradient-to-r from-rose-600 via-orange-500 to-amber-400 h-full transition-all duration-300"
+              style={{ width: `${(bossHp / MAX_BOSS_HP) * 100}%` }}
+            />
+          </div>
         </div>
 
-        <div className="flex gap-2">
-          <span className="bg-amber-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">Boss Progress {currentIdx + 1} / 10</span>
-          <span className="bg-white border-2 border-amber-200 px-4 py-1.5 rounded-full text-xs font-black text-amber-600 shadow-sm">Score {score}</span>
-          <button onClick={() => new Audio(currentQ.audioUrl).play()} className="ml-auto flex items-center gap-2 bg-[#FFAE34] hover:bg-[#E59A2B] text-white px-4 py-1.5 rounded-full text-xs font-black shadow-sm"><Volume2 className="w-4 h-4" />Sound</button>
-        </div>
+        {/* 배틀 필드 */}
+        {gameState === "playing" && (
+          <div className="flex flex-col gap-4">
+            <div className="relative bg-slate-950 border-2 border-slate-800 rounded-2xl h-40 flex flex-col justify-between p-4 overflow-hidden shadow-inner">
+              <div className="flex justify-between items-center text-xs font-bold text-slate-400">
+                <span className="flex items-center gap-1 text-orange-400"><Flame className="w-4 h-4" /> BOSS ATTACK</span>
+                <span className="flex items-center gap-1 text-cyan-400"><Shield className="w-4 h-4" /> PLAYER DEFENSE</span>
+              </div>
 
-        {/* Master Box Question View */}
-        <div className="bg-white border-4 border-amber-100 rounded-2xl p-8 flex flex-col items-center justify-center shadow-sm relative min-h-[120px]">
-          <h2 className="text-xl md:text-2xl font-black text-slate-800 tracking-wide text-center leading-relaxed">
-            {feedback === "correct" ? currentQ.sentence : currentQ.blankSentence}
-          </h2>
-          {feedback === "correct" && <div className="absolute inset-0 bg-emerald-500/10 rounded-xl flex items-center justify-center font-black text-emerald-600 text-lg">Excellent Combo! ✨</div>}
-          {feedback === "wrong" && <div className="absolute inset-0 bg-rose-500/10 rounded-xl flex items-center justify-center font-black text-rose-600 text-lg">Boss Resisted! ❌</div>}
-        </div>
+              {/* 투사체 트랙 */}
+              <div className="relative w-full h-14 flex items-center">
+                <div className="absolute left-0 right-0 h-1 bg-slate-800 rounded-full" />
+                
+                <div
+                  className="absolute flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold px-3 py-1.5 rounded-2xl shadow-lg border border-yellow-300 transition-all duration-75 max-w-[75%]"
+                  style={{ left: `calc(${Math.min(timerProgress, 72)}%)` }}
+                >
+                  <Flame className="w-4 h-4 flex-shrink-0 animate-spin" />
+                  <span className="text-xs tracking-tight line-clamp-2">
+                    {sentenceDisplay}
+                  </span>
+                </div>
 
-        {/* Choice Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-          {options.map((option, idx) => {
-            const isSelected = selectedOpt === option;
-            const isCorrect = option === currentQ.wordKey;
-            let btnStyle = "bg-white border-2 border-gray-200 hover:border-amber-400 hover:shadow-md text-slate-800";
-            if (feedback && isSelected) {
-              btnStyle = isCorrect ? "bg-emerald-500 text-white border-emerald-600 shadow-md" : "bg-rose-500 text-white border-rose-600 opacity-80";
-            } else if (feedback && isCorrect) {
-              btnStyle = "bg-emerald-100 border-emerald-300 text-emerald-800";
-            }
+                <div className="absolute right-0 w-3.5 h-12 bg-cyan-400 rounded-full shadow-[0_0_15px_rgba(34,211,238,0.8)]" />
+              </div>
 
-            return (
-              <button key={`boss-opt-${idx}`} onClick={() => handleOptionClick(option)} disabled={!!feedback} className={`w-full py-4 rounded-xl font-black text-xl tracking-wide transition-all border font-sans capitalize ${btnStyle}`}>
-                {option.replace(/_/g, " ")}
+              <div className="flex justify-between items-center z-10">
+                <span className="text-[11px] text-slate-400">Select the matching shield before the fireball strikes!</span>
+                <button
+                  onClick={() => currentQ.audioUrl && new Audio(currentQ.audioUrl).play()}
+                  className="flex items-center gap-1 text-xs bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-cyan-500/40 px-3 py-1 rounded-full shadow"
+                >
+                  <Volume2 className="w-3.5 h-3.5" /> Sound
+                </button>
+              </div>
+
+              {feedback === "deflect" && (
+                <div className="absolute inset-0 bg-cyan-500/20 backdrop-blur-[2px] flex items-center justify-center text-cyan-300 font-black text-2xl tracking-widest animate-pulse z-20">
+                  ⚡ SHIELD REFLECT! (-20 HP)
+                </div>
+              )}
+              {feedback === "hit" && (
+                <div className="absolute inset-0 bg-rose-600/30 backdrop-blur-[2px] flex items-center justify-center text-rose-300 font-black text-2xl tracking-widest animate-bounce z-20">
+                  💥 SHIELD BROKEN! (-1 HEART)
+                </div>
+              )}
+            </div>
+
+            {/* 선택지 버튼 */}
+            <div className="grid grid-cols-2 gap-3">
+              {options.map((opt) => (
+                <button
+                  key={opt.wordKey}
+                  onClick={() => handleShieldSelect(opt.wordKey)}
+                  disabled={isProcessingRef.current || !!feedback}
+                  className="group relative py-4 px-3 rounded-2xl font-black text-lg bg-slate-800/90 hover:bg-cyan-600 hover:border-cyan-300 text-slate-100 border-2 border-slate-700 transition-all active:scale-95 capitalize shadow-md flex items-center justify-center gap-2"
+                >
+                  <Shield className="w-4 h-4 text-cyan-400 group-hover:text-white transition-colors" />
+                  <span>{(opt.wordKey || "").replace(/_/g, " ")}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 승리 화면 */}
+        {gameState === "victory" && (
+          <div className="flex flex-col items-center justify-center p-8 gap-4 text-center">
+            <Trophy className="w-16 h-16 text-yellow-400 animate-bounce" />
+            <h3 className="text-3xl font-black text-amber-400">BOSS SHIELD MASTER!</h3>
+            <p className="text-slate-300">You successfully defeated the Dragon Boss with perfect defense!</p>
+            <button
+              onClick={closeGameModal}
+              className="mt-4 px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black rounded-xl hover:scale-105 transition-all shadow-lg"
+            >
+              Claim Rewards & Close
+            </button>
+          </div>
+        )}
+
+        {/* 패배 화면 */}
+        {gameState === "gameover" && (
+          <div className="flex flex-col items-center justify-center p-8 gap-4 text-center">
+            <span className="text-5xl">🛡️💥</span>
+            <h3 className="text-3xl font-black text-rose-500">DEFENSE FAILED</h3>
+            <p className="text-slate-300">Your shield has been destroyed. Would you like to try again?</p>
+            <div className="flex gap-3 mt-4">
+              <button
+                onClick={initGame}
+                className="flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl transition-all border border-slate-600"
+              >
+                <RotateCcw className="w-4 h-4" /> Retry
               </button>
-            );
-          })}
-        </div>
+              <button
+                onClick={closeGameModal}
+                className="px-6 py-3 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl transition-all"
+              >
+                Exit
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
