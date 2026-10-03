@@ -1,62 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 
-// 타입 임포트 (필요 시 경로 확인)
-import type { PlaceDataType } from "@/pages/placed/constants/my-house/my-house-data/types";
-import type { RegionData } from "@/pages/placed/constants/my-house/my-house-data/types";
-
-// 1. 데이터 및 타입 임포트 (총 10개 장소 데이터)
-import { apartmentData } from "@/pages/placed/constants/my-house/my-house-data/ApartmentData";
-import { houseData } from "@/pages/placed/constants/my-house/my-house-data/HouseData";
-import { kitchenData } from "@/pages/placed/constants/my-house/my-house-data/KitchenData";
-import { livingRoomData } from "@/pages/placed/constants/my-house/my-house-data/LivingRoomData";
-import { bathroomData } from "@/pages/placed/constants/my-house/my-house-data/BathroomData";
-import { bedroomData } from "@/pages/placed/constants/my-house/my-house-data/BedroomData";
-import { playgroundData } from "@/pages/placed/constants/my-house/my-house-data/PlaygroundData";
-import { recyclingAreaData } from "@/pages/placed/constants/my-house/my-house-data/RecyclingData";
-import { familyData } from "@/pages/placed/constants/my-house/my-house-data/FamilyData";
-import { calendarData } from "@/pages/placed/constants/my-house/my-house-data/CalendarData";
+// 타입 임포트
+import type { PlaceDataType, RegionData } from "@/pages/placed/constants/my-house/my-house-data/types";
 
 // 수평 분리한 핵심 모드 컨테이너 임포트
 import GameContainer from "./GameContainer";
 
 interface AdventureContainerProps {
-  placeData?: PlaceDataType;
+  placeData: PlaceDataType; // 이제 옵셔널(?)이 아닌 필수로 받습니다.
 }
 
-// 🌟 장소 선택 타입 정의 (총 10개 장소 키)
-type PlaceType =
-  | "apartment"
-  | "house"
-  | "kitchen"
-  | "livingroom"
-  | "bathroom"
-  | "bedroom"
-  | "playground"
-  | "recycling_area"
-  | "family"
-  | "calendar";
-
-export default function AdventureContainer({ placeData: initialPlaceData }: AdventureContainerProps) {
-  // 🌟 현재 선택된 장소 데이터 상태
-  const [selectedPlaceKey, setSelectedPlaceKey] = useState<PlaceType>(
-    (initialPlaceData?.placeKey as PlaceType) || "apartment"
-  );
-
-  const placeDataMap: Record<PlaceType, PlaceDataType> = {
-    apartment: apartmentData,
-    house: houseData,
-    kitchen: kitchenData,
-    livingroom: livingRoomData,
-    bathroom: bathroomData,
-    bedroom: bedroomData,
-    playground: playgroundData,
-    recycling_area: recyclingAreaData,
-    family: familyData,
-    calendar: calendarData,
-  };
-
-  const placeData = placeDataMap[selectedPlaceKey] || apartmentData;
-  const { placeTitle, bgImage, masterRegions } = placeData;
+export default function AdventureContainer({ placeData }: AdventureContainerProps) {
+  // 🌟 부모(HouseMain, MyTownPage)가 넘겨준 데이터를 그대로 꺼내 씁니다. (맵핑/임포트 전부 삭제!)
+  const { placeTitle, bgImage, masterRegions, placeKey } = placeData;
 
   // 컨트롤 상태 관리
   const [currentMode, setCurrentMode] = useState<"explore" | "game">("explore");
@@ -70,21 +26,9 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
   const currentAudioRef = useRef<HTMLAudioElement | null>(null);
   const bubbleTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  
   const totalWords = masterRegions.length; // 총 단어 갯수
   const clickedCount = clickedSet.size; // 내가 클릭 한 단어 갯수
-  const isGameUnlocked = clickedCount >= totalWords && totalWords > 0; // 내가 클릭한 단어 갯수가 더 크거나 총단어갯수보다 같거나 크면 게임모드 오픈
-  //  장소 전환 시 이전 상태 클리어
-  const handlePlaceChange = (key: PlaceType) => {
-    stopCurrentAudio();
-    setSelectedPlaceKey(key);
-    setActiveClickedTarget(null);
-    setHoveredTarget(null);
-    setVideoTarget(null);
-    setShowBubble(false);
-    setHintOn(false);
-    setClickedSet(new Set());
-  };
+  const isGameUnlocked = totalWords;
 
   // 오디오 시스템 제어 핸들러
   const stopCurrentAudio = () => {
@@ -97,10 +41,10 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
   const playSentenceAudios = (wordKey: string) => {
     stopCurrentAudio();
     if (!wordKey) return;
-    // 🌟 안전하게 소문자 변환 적용
     const cleanTargetId = wordKey.replace(/_/g, "").toLowerCase();
 
-    const folderName = `${placeData.placeKey}Sentence`;
+    // 🌟 오디오 폴더명 규칙을 placeKey를 이용해 동적으로 맞춤
+    const folderName = `${placeKey}Sentence`;
     const firstAudio = new Audio(`/audio/${folderName}/${cleanTargetId}1.mp3`);
     currentAudioRef.current = firstAudio;
 
@@ -166,35 +110,10 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
     <div className="min-h-screen flex flex-col items-center justify-start pb-16 w-full relative"
       style={{ background: "radial-gradient(1200px 500px at 50% -10%, #BFE8F7 0%, transparent 60%), linear-gradient(180deg, #A7DCF0 0%, #C9EAD3 48%, #B4E09A 100%)" }}>
 
-      {/* 1. 장소 선택 토글 버튼 (총 10개 장소) */}
-      <div className="pt-8 flex gap-2.5 z-20 flex-wrap justify-center max-w-[1100px] px-4">
-        {[
-          { key: "apartment", label: "🏢 Apartment" },
-          { key: "house", label: "🏡 House" },
-          { key: "kitchen", label: "🍳 Kitchen" },
-          { key: "livingroom", label: "📺 Living Room" },
-          { key: "bathroom", label: "🛁 Bathroom" },
-          { key: "bedroom", label: "🛏️ Bedroom" },
-          { key: "playground", label: "🛝 Playground" },
-          { key: "recycling_area", label: "♻️ Recycling" },
-          { key: "family", label: "👨‍👩‍👧‍👦 Family" },
-          { key: "calendar", label: "📅 Calendar" },
-        ].map((item) => (
-          <button
-            key={item.key}
-            onClick={() => handlePlaceChange(item.key as PlaceType)}
-            className={`px-4 py-2 rounded-full font-black text-xs shadow-md transition-all ${selectedPlaceKey === item.key
-              ? "bg-[#2E7D32] text-white scale-105 border-2 border-white"
-              : "bg-white/80 text-emerald-800 hover:bg-white"
-              }`}
-          >
-            {item.label}
-          </button>
-        ))}
-      </div>
+      {/* 🌟 기존 상단 장소 선택 토글 버튼들은 HouseMain/MyTownPage에 역할이 넘어갔으므로 제거했습니다. */}
 
       {/* 장소 기반 동적 대타이틀 표출 */}
-      <div className="text-center pt-4 mb-6">
+      <div className="text-center pt-24 mb-6">
         <h1 className="text-5xl font-black text-white tracking-tight drop-shadow-[0_4px_4px_rgba(74,142,112,0.3)] mb-3">{placeTitle}</h1>
       </div>
 
@@ -218,7 +137,6 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
             ? "🎮 Game Mode"
             : `🔒 Game Mode (${clickedCount}/${totalWords})`}
         </button>
-
       </div>
 
       {/* ==================== 1. EXPLORER MODE ==================== */}
@@ -285,10 +203,9 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
         </div>
       )}
 
-
       {/* ==================== 2. GAME MODE ==================== */}
       {currentMode === "game" && (
-        <GameContainer key={selectedPlaceKey} placeData={placeData} />
+        <GameContainer key={placeKey} placeData={placeData} />
       )}
 
       {/* ==================== 🎬 미디어 비디오 학습 모달 ==================== */}
@@ -299,7 +216,7 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
               <h2 className="text-2xl font-black text-[#4B9343] capitalize">{videoTarget.wordKey.replace(/_/g, " ")}</h2>
               <button
                 onClick={() => {
-                  stopCurrentAudio(); // 👈 닫을 때 오디오 정지
+                  stopCurrentAudio();
                   setVideoTarget(null);
                 }}
                 className="w-8 h-8 rounded-full border flex items-center justify-center font-bold text-gray-400 bg-white shadow-sm hover:text-black"
@@ -312,7 +229,7 @@ export default function AdventureContainer({ placeData: initialPlaceData }: Adve
                 src={videoTarget.videoPath}
                 controls
                 autoPlay
-                playsInline  // 👈 인라인 재생
+                playsInline
                 onEnded={() => setClickedSet(p => new Set(p).add(videoTarget.wordKey))}
                 className="w-full h-full object-contain"
               />
