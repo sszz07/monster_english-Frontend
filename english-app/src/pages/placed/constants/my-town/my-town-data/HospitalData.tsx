@@ -1,4 +1,4 @@
-import hospitalImg from "@/assets/image/places/my-town/Hospital(clinic).png"; //[cite: 12]
+import hospitalImg from "@/assets/image/places/my-town/Hospital(clinic).png";
 
 export interface RegionData {
   wordKey: string;
@@ -13,7 +13,6 @@ export interface RegionData {
     height: string;
   };
   points: string; 
-  // "hospital" 타입을 추가했습니다.
   imageType?: "apartment" | "house" | "bakery" | "busstop" | "classroom" | "cafeteria" | "subway" | "crosswalk" | "stationery" | "supermarket" | "pharmacy" | "hospital"; 
 }
 
@@ -29,7 +28,7 @@ export const hospitalData: PlaceDataType = {
   placeTitle: "Hospital Word Adventure",
   bgImage: hospitalImg,
   masterRegions: [
-    // 1. 의사 (오른쪽 뒤 진료실 문 앞의 초록색 몬스터 의사)[cite: 12]
+    // 1. 의사 (다른 간판들과 겹치지 않도록 적절히 축소 및 재배치)
     {
       wordKey: "doctor",
       korean: "의사",
@@ -37,10 +36,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Doctor.mp4",
       sentence: "The doctor helps you when you are sick.",
       imageType: "hospital",
-      targetStyle: { top: '20.0%', left: '60.0%', width: '12.0%', height: '28.0%' },
-      points: "96.0,18.0 115.2,18.0 115.2,43.2 96.0,43.2"
+      targetStyle: { top: '15.0%', left: '58.0%', width: '12.0%', height: '25.0%' },
+      points: "92.8,13.5 112.0,13.5 112.0,36.0 92.8,36.0"
     },
-    // 2. 간호사 (카운터 가운데 앉아있는 간호사)[cite: 12]
+    // 2. 간호사
     {
       wordKey: "nurse",
       korean: "간호사",
@@ -48,10 +47,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Nurse.mp4",
       sentence: "The nurse is very kind and helpful.",
       imageType: "hospital",
-      targetStyle: { top: '35.0%', left: '28.0%', width: '12.0%', height: '30.0%' },
-      points: "44.8,31.5 64.0,31.5 64.0,58.5 44.8,58.5"
+      targetStyle: { top: '35.0%', left: '28.0%', width: '12.0%', height: '20.0%' },
+      points: "44.8,31.5 64.0,31.5 64.0,49.5 44.8,49.5"
     },
-    // 3. 환자 (오른쪽에서 블록 장난감을 가지고 노는 여자아이)[cite: 12]
+    // 3. 환자
     {
       wordKey: "patient",
       korean: "환자",
@@ -59,10 +58,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Patient.mp4",
       sentence: "The little patient is waiting to see the doctor.",
       imageType: "hospital",
-      targetStyle: { top: '40.0%', left: '85.0%', width: '10.0%', height: '30.0%' },
-      points: "136.0,36.0 152.0,36.0 152.0,63.0 136.0,63.0"
+      targetStyle: { top: '35.0%', left: '85.0%', width: '12.0%', height: '25.0%' },
+      points: "136.0,31.5 155.2,31.5 155.2,54.0 136.0,54.0"
     },
-    // 4. 대기실 (오른쪽 앞 파란색 의자가 있는 공간)[cite: 12]
+    // 4. 대기실 (전체 바닥을 덮지 않도록 우측 하단 의자 구역으로 축소)
     {
       wordKey: "waiting_room",
       korean: "대기실",
@@ -70,10 +69,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/WaitingRoom.mp4",
       sentence: "Please sit in the waiting room until your turn.",
       imageType: "hospital",
-      targetStyle: { top: '70.0%', left: '75.0%', width: '25.0%', height: '30.0%' },
-      points: "120.0,63.0 160.0,63.0 160.0,90.0 120.0,90.0"
+      targetStyle: { top: '65.0%', left: '75.0%', width: '20.0%', height: '25.0%' },
+      points: "120.0,58.5 152.0,58.5 152.0,81.0 120.0,81.0"
     },
-    // 5. 병원/의원 (중앙 접수대 카운터 영역 전체)[cite: 12]
+    // 5. 병원/의원 (중앙 전체를 덮던 영역을 접수대 일부 공간으로 대폭 축소)
     {
       wordKey: "clinic",
       korean: "병원(의원)",
@@ -81,10 +80,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Clinic.mp4",
       sentence: "I go to the clinic when I have a cold.",
       imageType: "hospital",
-      targetStyle: { top: '50.0%', left: '20.0%', width: '60.0%', height: '50.0%' },
-      points: "32.0,45.0 128.0,45.0 128.0,90.0 32.0,90.0"
+      targetStyle: { top: '60.0%', left: '20.0%', width: '15.0%', height: '15.0%' },
+      points: "32.0,54.0 56.0,54.0 56.0,67.5 32.0,67.5"
     },
-    // 6. 응급 (왼쪽 위 벽에 붙은 빨간색 emergency 간판)[cite: 12]
+    // 6. 응급
     {
       wordKey: "emergency",
       korean: "응급",
@@ -95,7 +94,7 @@ export const hospitalData: PlaceDataType = {
       targetStyle: { top: '2.0%', left: '8.0%', width: '15.0%', height: '10.0%' },
       points: "12.8,1.8 36.8,1.8 36.8,10.8 12.8,10.8"
     },
-    // 7. 구급차 (간호사 왼쪽 진열장의 장난감 구급차)[cite: 12]
+    // 7. 구급차
     {
       wordKey: "ambulance",
       korean: "구급차",
@@ -103,10 +102,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Ambulance.mp4",
       sentence: "The ambulance drives fast to the hospital.",
       imageType: "hospital",
-      targetStyle: { top: '38.0%', left: '2.0%', width: '8.0%', height: '10.0%' },
-      points: "3.2,34.2 16.0,34.2 16.0,43.2 3.2,43.2"
+      targetStyle: { top: '35.0%', left: '2.0%', width: '10.0%', height: '8.0%' },
+      points: "3.2,31.5 19.2,31.5 19.2,38.7 3.2,38.7"
     },
-    // 8. 체온계 (간호사 뒤쪽 책상 위에 있는 하얀 체온계)[cite: 12]
+    // 8. 체온계
     {
       wordKey: "thermometer",
       korean: "체온계",
@@ -114,10 +113,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Thermometer.mp4",
       sentence: "The nurse uses a thermometer to check your fever.",
       imageType: "hospital",
-      targetStyle: { top: '42.0%', left: '12.0%', width: '8.0%', height: '5.0%' },
-      points: "19.2,37.8 32.0,37.8 32.0,42.3 19.2,42.3"
+      targetStyle: { top: '45.0%', left: '2.0%', width: '10.0%', height: '8.0%' },
+      points: "3.2,40.5 19.2,40.5 19.2,47.7 3.2,47.7"
     },
-    // 9. 약 (왼쪽 앞 카운터 위에 쌓여 있는 약 상자들)[cite: 12]
+    // 9. 약
     {
       wordKey: "medicine",
       korean: "약",
@@ -125,10 +124,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Medicine.mp4",
       sentence: "You need to take your medicine on time.",
       imageType: "hospital",
-      targetStyle: { top: '70.0%', left: '0.0%', width: '25.0%', height: '25.0%' },
-      points: "0.0,63.0 40.0,63.0 40.0,85.5 0.0,85.5"
+      targetStyle: { top: '60.0%', left: '2.0%', width: '12.0%', height: '15.0%' },
+      points: "3.2,54.0 22.4,54.0 22.4,67.5 3.2,67.5"
     },
-    // 10. 알약 (painkiller 상자 앞면에 그려진 주황색 알약 그림)[cite: 12]
+    // 10. 알약
     {
       wordKey: "pill",
       korean: "알약",
@@ -136,10 +135,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Pill.mp4",
       sentence: "Swallow the small pill with water.",
       imageType: "hospital",
-      targetStyle: { top: '85.0%', left: '6.0%', width: '4.0%', height: '8.0%' },
-      points: "9.6,76.5 16.0,76.5 16.0,83.7 9.6,83.7"
+      targetStyle: { top: '78.0%', left: '2.0%', width: '12.0%', height: '12.0%' },
+      points: "3.2,70.2 22.4,70.2 22.4,81.0 3.2,81.0"
     },
-    // 11. 주사 (간호사 뒤쪽 선반의 주사기들)[cite: 12]
+    // 11. 주사
     {
       wordKey: "injection",
       korean: "주사",
@@ -147,10 +146,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Injection.mp4",
       sentence: "The injection will pinch just a little bit.",
       imageType: "hospital",
-      targetStyle: { top: '48.0%', left: '15.0%', width: '4.0%', height: '8.0%' },
-      points: "24.0,43.2 30.4,43.2 30.4,50.4 24.0,50.4"
+      targetStyle: { top: '35.0%', left: '15.0%', width: '8.0%', height: '8.0%' },
+      points: "24.0,31.5 36.8,31.5 36.8,38.7 24.0,38.7"
     },
-    // 12. 붕대 (간호사 뒤 주사기 옆의 붕대 상자들)[cite: 12]
+    // 12. 붕대
     {
       wordKey: "bandage",
       korean: "붕대",
@@ -158,10 +157,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Bandage.mp4",
       sentence: "We will put a soft bandage on your knee.",
       imageType: "hospital",
-      targetStyle: { top: '50.0%', left: '19.0%', width: '4.0%', height: '8.0%' },
-      points: "30.4,45.0 36.8,45.0 36.8,52.2 30.4,52.2"
+      targetStyle: { top: '45.0%', left: '15.0%', width: '8.0%', height: '8.0%' },
+      points: "24.0,40.5 36.8,40.5 36.8,47.7 24.0,47.7"
     },
-    // 13. 깁스 (우측 하단 선반 안쪽의 하얀색 롤 모양 의료 용품)[cite: 12]
+    // 13. 깁스
     {
       wordKey: "cast",
       korean: "깁스",
@@ -169,10 +168,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Cast.mp4",
       sentence: "He wore a cast on his broken arm.",
       imageType: "hospital",
-      targetStyle: { top: '88.0%', left: '65.0%', width: '5.0%', height: '10.0%' },
-      points: "104.0,79.2 112.0,79.2 112.0,88.2 104.0,88.2"
+      targetStyle: { top: '80.0%', left: '40.0%', width: '12.0%', height: '10.0%' },
+      points: "64.0,72.0 83.2,72.0 83.2,81.0 64.0,81.0"
     },
-    // 14. 엑스레이 (간호사 뒤쪽 벽에 걸린 폐 엑스레이 사진)[cite: 12]
+    // 14. 엑스레이
     {
       wordKey: "x_ray",
       korean: "엑스레이(X선)",
@@ -180,10 +179,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/X_Ray.mp4",
       sentence: "The doctor looks at the X-ray of your bones.",
       imageType: "hospital",
-      targetStyle: { top: '15.0%', left: '26.0%', width: '10.0%', height: '15.0%' },
-      points: "41.6,13.5 57.6,13.5 57.6,27.0 41.6,27.0"
+      targetStyle: { top: '15.0%', left: '25.0%', width: '15.0%', height: '15.0%' },
+      points: "40.0,13.5 64.0,13.5 64.0,27.0 40.0,27.0"
     },
-    // 15. 건강 검진 (오른쪽 패드를 들고 차트를 확인하는 안경 쓴 여성)[cite: 12]
+    // 15. 건강 검진
     {
       wordKey: "checkup",
       korean: "건강 검진",
@@ -191,10 +190,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Checkup.mp4",
       sentence: "I go to the doctor for a yearly checkup.",
       imageType: "hospital",
-      targetStyle: { top: '30.0%', left: '74.0%', width: '8.0%', height: '30.0%' },
-      points: "118.4,27.0 131.2,27.0 131.2,54.0 118.4,54.0"
+      targetStyle: { top: '30.0%', left: '72.0%', width: '10.0%', height: '25.0%' },
+      points: "115.2,27.0 131.2,27.0 131.2,49.5 115.2,49.5"
     },
-    // 16. 청진기 (의사 몬스터 목에 걸려있는 청진기)[cite: 12]
+    // 16. 청진기
     {
       wordKey: "stethoscope",
       korean: "청진기",
@@ -202,10 +201,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Stethoscope.mp4",
       sentence: "The doctor listens to my heart with a stethoscope.",
       imageType: "hospital",
-      targetStyle: { top: '30.0%', left: '63.0%', width: '4.0%', height: '10.0%' },
-      points: "100.8,27.0 107.2,27.0 107.2,36.0 100.8,36.0"
+      targetStyle: { top: '42.0%', left: '60.0%', width: '8.0%', height: '8.0%' },
+      points: "96.0,37.8 108.8,37.8 108.8,45.0 96.0,45.0"
     },
-    // 17. 혈압 (의사 방 옆 벽에 달린 혈압/심박수 모니터 화면)[cite: 12]
+    // 17. 혈압
     {
       wordKey: "blood_pressure",
       korean: "혈압",
@@ -213,10 +212,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/BloodPressure.mp4",
       sentence: "The nurse will measure your blood pressure.",
       imageType: "hospital",
-      targetStyle: { top: '20.0%', left: '49.0%', width: '6.0%', height: '10.0%' },
-      points: "78.4,18.0 88.0,18.0 88.0,27.0 78.4,27.0"
+      targetStyle: { top: '15.0%', left: '45.0%', width: '10.0%', height: '10.0%' },
+      points: "72.0,13.5 88.0,13.5 88.0,22.5 72.0,22.5"
     },
-    // 18. 마스크 (오른쪽 아래 선반에 있는 푸른 계열의 상자)[cite: 12]
+    // 18. 마스크
     {
       wordKey: "mask",
       korean: "마스크",
@@ -224,10 +223,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Mask.mp4",
       sentence: "Wear a mask to stop germs from spreading.",
       imageType: "hospital",
-      targetStyle: { top: '80.0%', left: '70.0%', width: '5.0%', height: '8.0%' },
-      points: "112.0,72.0 120.0,72.0 120.0,79.2 112.0,79.2"
+      targetStyle: { top: '80.0%', left: '55.0%', width: '12.0%', height: '10.0%' },
+      points: "88.0,72.0 107.2,72.0 107.2,81.0 88.0,81.0"
     },
-    // 19. 장갑 (진료실 문 옆 벽에 매달려 있는 파란색 장갑들)[cite: 12]
+    // 19. 장갑
     {
       wordKey: "gloves",
       korean: "장갑",
@@ -235,10 +234,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Gloves.mp4",
       sentence: "The doctor wears clean gloves to stay safe.",
       imageType: "hospital",
-      targetStyle: { top: '30.0%', left: '56.0%', width: '4.0%', height: '10.0%' },
-      points: "89.6,27.0 96.0,27.0 96.0,36.0 89.6,36.0"
+      targetStyle: { top: '28.0%', left: '45.0%', width: '8.0%', height: '10.0%' },
+      points: "72.0,25.2 84.8,25.2 84.8,34.2 72.0,34.2"
     },
-    // 20. 수술 (진료실 문 위에 있는 operation 초록색 간판)[cite: 12]
+    // 20. 수술
     {
       wordKey: "operation",
       korean: "수술",
@@ -246,10 +245,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Operation.mp4",
       sentence: "The doctor is doing a small operation.",
       imageType: "hospital",
-      targetStyle: { top: '8.0%', left: '62.0%', width: '10.0%', height: '5.0%' },
-      points: "99.2,7.2 115.2,7.2 115.2,11.7 99.2,11.7"
+      targetStyle: { top: '5.0%', left: '60.0%', width: '10.0%', height: '8.0%' },
+      points: "96.0,4.5 112.0,4.5 112.0,11.7 96.0,11.7"
     },
-    // 21. 건강 (오른쪽 벽에 크게 붙은 Medical Information Board)[cite: 12]
+    // 21. 건강
     {
       wordKey: "health",
       korean: "건강",
@@ -257,10 +256,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Health.mp4",
       sentence: "Eating apples is good for your health.",
       imageType: "hospital",
-      targetStyle: { top: '12.0%', left: '82.0%', width: '15.0%', height: '25.0%' },
-      points: "131.2,10.8 155.2,10.8 155.2,33.3 131.2,33.3"
+      targetStyle: { top: '10.0%', left: '82.0%', width: '15.0%', height: '20.0%' },
+      points: "131.2,9.0 155.2,9.0 155.2,27.0 131.2,27.0"
     },
-    // 22. 예약 (간호사 옆 벽의 Patient waiting list 예약자 명단)[cite: 12]
+    // 22. 예약
     {
       wordKey: "appointment",
       korean: "예약",
@@ -268,10 +267,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Appointment.mp4",
       sentence: "I have an appointment to see the doctor at two o'clock.",
       imageType: "hospital",
-      targetStyle: { top: '15.0%', left: '17.0%', width: '8.0%', height: '20.0%' },
-      points: "27.2,13.5 40.0,13.5 40.0,31.5 27.2,31.5"
+      targetStyle: { top: '15.0%', left: '10.0%', width: '10.0%', height: '15.0%' },
+      points: "16.0,13.5 32.0,13.5 32.0,27.0 16.0,27.0"
     },
-    // 23. 증상 (오른쪽 벽의 Treatment chart / 증상 기록판)[cite: 12]
+    // 23. 증상
     {
       wordKey: "symptoms",
       korean: "증상",
@@ -279,10 +278,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Symptoms.mp4",
       sentence: "Tell the doctor about your cold symptoms.",
       imageType: "hospital",
-      targetStyle: { top: '15.0%', left: '74.0%', width: '6.0%', height: '15.0%' },
-      points: "118.4,13.5 128.0,13.5 128.0,27.0 118.4,27.0"
+      targetStyle: { top: '15.0%', left: '72.0%', width: '8.0%', height: '12.0%' },
+      points: "115.2,13.5 128.0,13.5 128.0,24.3 115.2,24.3"
     },
-    // 24. 치료 (카운터의 진료용 모니터와 금전등록기 영역)[cite: 12]
+    // 24. 치료
     {
       wordKey: "treatment",
       korean: "치료",
@@ -290,10 +289,10 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Treatment.mp4",
       sentence: "Rest is the best treatment for a fever.",
       imageType: "hospital",
-      targetStyle: { top: '45.0%', left: '52.0%', width: '12.0%', height: '20.0%' },
-      points: "83.2,40.5 102.4,40.5 102.4,58.5 83.2,58.5"
+      targetStyle: { top: '45.0%', left: '45.0%', width: '12.0%', height: '12.0%' },
+      points: "72.0,40.5 91.2,40.5 91.2,51.3 72.0,51.3"
     },
-    // 25. 약국 (병원 안의 약을 처방해주는 전면 카운터 구역 전체)[cite: 12]
+    // 25. 약국 (전체 카운터를 덮던 것을 약품 전달대 쪽 빈 공간으로 축소)
     {
       wordKey: "pharmacy",
       korean: "약국",
@@ -301,8 +300,8 @@ export const hospitalData: PlaceDataType = {
       videoPath: "/video/hospital/Pharmacy.mp4",
       sentence: "We buy our medicine at the pharmacy.",
       imageType: "hospital",
-      targetStyle: { top: '60.0%', left: '30.0%', width: '40.0%', height: '35.0%' },
-      points: "48.0,54.0 112.0,54.0 112.0,85.5 48.0,85.5"
+      targetStyle: { top: '60.0%', left: '40.0%', width: '15.0%', height: '15.0%' },
+      points: "64.0,54.0 88.0,54.0 88.0,67.5 64.0,67.5"
     }
   ]
 };

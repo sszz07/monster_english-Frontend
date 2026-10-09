@@ -73,3 +73,6 @@ export const ALL_PLACES_DATA: PlaceDataRegistry = {
   pharmacy: pharmacyData,
   hospital: hospitalData,
 };
+
+
+//
