@@ -1,0 +1,10 @@
+// Bakery
+// BusStop
+// Cafeteria
+// Classroom
+// CrossWalk
+// Hospital
+// Pharmacy
+// StationeryShop
+// Subway
+// SuperMarket
