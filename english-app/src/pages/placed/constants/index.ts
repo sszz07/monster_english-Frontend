@@ -10,7 +10,7 @@ import { recyclingAreaData } from "@/pages/placed/constants/my-house/my-house-da
 import { familyData } from "@/pages/placed/constants/my-house/my-house-data/FamilyData";
 import { calendarData } from "@/pages/placed/constants/my-house/my-house-data/CalendarData";
 
-// --- 새롭게 추가된 My Town 데이터 임포트 ---
+// --- 기존 My Town 데이터 임포트 ---
 import { classroomData } from "@/pages/placed/constants/my-town/my-town-data/ClassroomData";
 import { cafeteriaData } from "@/pages/placed/constants/my-town/my-town-data/CafeteriaData";
 import { busStopData } from "@/pages/placed/constants/my-town/my-town-data/BusStopData";
@@ -21,6 +21,18 @@ import { bakeryData } from "@/pages/placed/constants/my-town/my-town-data/Bakery
 import { supermarketData } from "@/pages/placed/constants/my-town/my-town-data/SuperMarketData";
 import { pharmacyData } from "@/pages/placed/constants/my-town/my-town-data/PharmacyData";
 import { hospitalData } from "@/pages/placed/constants/my-town/my-town-data/HospitalData";
+
+// --- 새롭게 추가된 Fantasy Nature 데이터 임포트 ---
+import { aquariumData } from "@/pages/placed/constants/fantasy-nature/fantasy-nature-data/AquariumData";
+import { bankData } from "@/pages/placed/constants/fantasy-nature/fantasy-nature-data/BankData";
+import { cinemaData } from "@/pages/placed/constants/fantasy-nature/fantasy-nature-data/CinemaData";
+import { fireStationData } from "@/pages/placed/constants/fantasy-nature/fantasy-nature-data/FireStationData";
+import { marketData } from "@/pages/placed/constants/fantasy-nature/fantasy-nature-data/MarketData";
+import { museumData } from "@/pages/placed/constants/fantasy-nature/fantasy-nature-data/MuseumData";
+import { parkData } from "@/pages/placed/constants/fantasy-nature/fantasy-nature-data/ParkData";
+import { policeStationData } from "@/pages/placed/constants/fantasy-nature/fantasy-nature-data/PoliceStationData";
+import { postOfficeData } from "@/pages/placed/constants/fantasy-nature/fantasy-nature-data/PostOfficeData";
+import { zooData } from "@/pages/placed/constants/fantasy-nature/fantasy-nature-data/ZooData";
 
 export interface RegionData {
   wordKey: string;
@@ -61,7 +73,7 @@ export const ALL_PLACES_DATA: PlaceDataRegistry = {
   family: familyData,
   calendar: calendarData,
 
-  // [추가] My Town Data (MyTownPage의 placeKey와 정확히 일치)
+  // [기존] My Town Data
   classroom: classroomData,
   cafeteria: cafeteriaData,
   busstop: busStopData,
@@ -72,7 +84,16 @@ export const ALL_PLACES_DATA: PlaceDataRegistry = {
   supermarket: supermarketData,
   pharmacy: pharmacyData,
   hospital: hospitalData,
+
+  // [추가] Fantasy Nature Data
+  aquarium: aquariumData,
+  bank: bankData,
+  cinema: cinemaData,
+  firestation: fireStationData,
+  market: marketData,
+  museum: museumData,
+  park: parkData,
+  policestation: policeStationData,
+  postoffice: postOfficeData,
+  zoo: zooData,
 };
-
-
-//

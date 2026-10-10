@@ -34,7 +34,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "약",
       audioUrl: "/audio/pharmacy/medicine.mp3",
       videoPath: "/video/pharmacy/Medicine.mp4",
-      sentence: "Take this medicine after meals.",
+      sentence: "The medicine is safe for children. She takes medicine after every meal.",
       imageType: "pharmacy",
       targetStyle: { top: '62.0%', left: '14.0%', width: '8.0%', height: '8.0%' },
       points: "22.4,55.8 35.2,55.8 35.2,63.0 22.4,63.0"
@@ -45,7 +45,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "알약",
       audioUrl: "/audio/pharmacy/pill.mp3",
       videoPath: "/video/pharmacy/Pill.mp4",
-      sentence: "Swallow the pill with a glass of water.",
+      sentence: "The pill is small and round in the bottle. He puts a pill in his mouth.",
       imageType: "pharmacy",
       targetStyle: { top: '5.0%', left: '5.0%', width: '8.0%', height: '8.0%' },
       points: "8.0,4.5 20.8,4.5 20.8,11.7 8.0,11.7"
@@ -56,7 +56,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "정제(알약)",
       audioUrl: "/audio/pharmacy/tablet.mp3",
       videoPath: "/video/pharmacy/Tablet.mp4",
-      sentence: "The doctor prescribed a tablet for my fever.",
+      sentence: "The tablet is white and flat on the counter. She takes a tablet with water.",
       imageType: "pharmacy",
       targetStyle: { top: '18.0%', left: '5.0%', width: '8.0%', height: '8.0%' },
       points: "8.0,16.2 20.8,16.2 20.8,23.4 8.0,23.4"
@@ -67,7 +67,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "시럽",
       audioUrl: "/audio/pharmacy/syrup.mp3",
       videoPath: "/video/pharmacy/Syrup.mp4",
-      sentence: "Drink the strawberry syrup for your cough.",
+      sentence: "The syrup is sweet and thick in the bottle. He pours syrup into a spoon.",
       imageType: "pharmacy",
       targetStyle: { top: '32.0%', left: '5.0%', width: '8.0%', height: '8.0%' },
       points: "8.0,28.8 20.8,28.8 20.8,36.0 8.0,36.0"
@@ -78,7 +78,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "붕대(반창고)",
       audioUrl: "/audio/pharmacy/bandage.mp3",
       videoPath: "/video/pharmacy/Bandage.mp4",
-      sentence: "Put a bandage on your cut.",
+      sentence: "The bandage is clean and white in the box. She wraps a bandage around her finger.",
       imageType: "pharmacy",
       targetStyle: { top: '48.0%', left: '15.0%', width: '6.0%', height: '6.0%' },
       points: "24.0,43.2 33.6,43.2 33.6,48.6 24.0,48.6"
@@ -89,7 +89,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "연고",
       audioUrl: "/audio/pharmacy/ointment.mp3",
       videoPath: "/video/pharmacy/Ointment.mp4",
-      sentence: "Apply this ointment to heal the burn.",
+      sentence: "The ointment is soft and smooth in the tube. He puts ointment on his cut.",
       imageType: "pharmacy",
       targetStyle: { top: '85.0%', left: '58.0%', width: '6.0%', height: '8.0%' },
       points: "92.8,76.5 102.4,76.5 102.4,83.7 92.8,83.7"
@@ -100,7 +100,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "비타민",
       audioUrl: "/audio/pharmacy/vitamins.mp3",
       videoPath: "/video/pharmacy/Vitamins.mp4",
-      sentence: "Vitamins help you stay healthy and strong.",
+      sentence: "The vitamins are colorful and round in the jar. She takes vitamins every morning.",
       imageType: "pharmacy",
       targetStyle: { top: '72.0%', left: '25.0%', width: '8.0%', height: '8.0%' },
       points: "40.0,64.8 52.8,64.8 52.8,72.0 40.0,72.0"
@@ -111,7 +111,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "처방전",
       audioUrl: "/audio/pharmacy/prescription.mp3",
       videoPath: "/video/pharmacy/Prescription.mp4",
-      sentence: "Give the prescription to the pharmacist.",
+      sentence: "The prescription is important and official from the doctor. He gives the prescription to the pharmacist.",
       imageType: "pharmacy",
       targetStyle: { top: '45.0%', left: '45.0%', width: '6.0%', height: '6.0%' },
       points: "72.0,40.5 81.6,40.5 81.6,45.9 72.0,45.9"
@@ -122,7 +122,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "약사",
       audioUrl: "/audio/pharmacy/pharmacist.mp3",
       videoPath: "/video/pharmacy/Pharmacist.mp4",
-      sentence: "The pharmacist explains how to take the medicine.",
+      sentence: "The pharmacist is helpful and kind at the counter. The pharmacist reads the prescription carefully.",
       imageType: "pharmacy",
       targetStyle: { top: '15.0%', left: '35.0%', width: '8.0%', height: '12.0%' },
       points: "56.0,13.5 68.8,13.5 68.8,24.3 56.0,24.3"
@@ -133,7 +133,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "계산대(카운터)",
       audioUrl: "/audio/pharmacy/counter.mp3",
       videoPath: "/video/pharmacy/Counter.mp4",
-      sentence: "Please pay at the pharmacy counter.",
+      sentence: "The counter is wide and clean at the front. She puts her medicine on the counter.",
       imageType: "pharmacy",
       targetStyle: { top: '60.0%', left: '60.0%', width: '10.0%', height: '10.0%' },
       points: "96.0,54.0 112.0,54.0 112.0,63.0 96.0,63.0"
@@ -144,7 +144,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "영수증",
       audioUrl: "/audio/pharmacy/receipt.mp3",
       videoPath: "/video/pharmacy/Receipt.mp4",
-      sentence: "Here is your receipt and change.",
+      sentence: "The receipt is long and thin in her hand. He keeps the receipt in his pocket.",
       imageType: "pharmacy",
       targetStyle: { top: '52.0%', left: '62.0%', width: '4.0%', height: '6.0%' },
       points: "99.2,46.8 105.6,46.8 105.6,52.2 99.2,52.2"
@@ -155,7 +155,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "휴지",
       audioUrl: "/audio/pharmacy/tissue.mp3",
       videoPath: "/video/pharmacy/Tissue.mp4",
-      sentence: "Blow your nose with a soft tissue.",
+      sentence: "The tissue is soft and white in the box. She takes a tissue from the box.",
       imageType: "pharmacy",
       targetStyle: { top: '62.0%', left: '4.0%', width: '8.0%', height: '8.0%' },
       points: "6.4,55.8 19.2,55.8 19.2,63.0 6.4,63.0"
@@ -166,7 +166,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "마스크",
       audioUrl: "/audio/pharmacy/mask.mp3",
       videoPath: "/video/pharmacy/Mask.mp4",
-      sentence: "Wear a mask to protect yourself from dust.",
+      sentence: "The mask is blue and clean in the package. He puts on a mask before going outside.",
       imageType: "pharmacy",
       targetStyle: { top: '32.0%', left: '55.0%', width: '6.0%', height: '6.0%' },
       points: "88.0,28.8 97.6,28.8 97.6,34.2 88.0,34.2"
@@ -177,7 +177,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "손소독제",
       audioUrl: "/audio/pharmacy/sanitizer.mp3",
       videoPath: "/video/pharmacy/Sanitizer.mp4",
-      sentence: "Use hand sanitizer to clean your hands.",
+      sentence: "The sanitizer is cold and wet on your hands. She puts sanitizer on her hands.",
       imageType: "pharmacy",
       targetStyle: { top: '72.0%', left: '35.0%', width: '8.0%', height: '8.0%' },
       points: "56.0,64.8 68.8,64.8 68.8,72.0 56.0,72.0"
@@ -188,7 +188,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "체온계",
       audioUrl: "/audio/pharmacy/thermometer.mp3",
       videoPath: "/video/pharmacy/Thermometer.mp4",
-      sentence: "The thermometer checks if you have a fever.",
+      sentence: "The thermometer is long and thin in the case. He puts the thermometer under his arm.",
       imageType: "pharmacy",
       targetStyle: { top: '45.0%', left: '80.0%', width: '8.0%', height: '8.0%' },
       points: "128.0,40.5 140.8,40.5 140.8,47.7 128.0,47.7"
@@ -199,7 +199,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "면봉",
       audioUrl: "/audio/pharmacy/cotton_swab.mp3",
       videoPath: "/video/pharmacy/CottonSwab.mp4",
-      sentence: "Use a cotton swab gently.",
+      sentence: "The cotton swab is soft and white in the bag. She cleans her ear with a cotton swab.",
       imageType: "pharmacy",
       targetStyle: { top: '48.0%', left: '25.0%', width: '6.0%', height: '6.0%' },
       points: "40.0,43.2 49.6,43.2 49.6,48.6 40.0,48.6"
@@ -210,7 +210,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "진통제",
       audioUrl: "/audio/pharmacy/painkiller.mp3",
       videoPath: "/video/pharmacy/Painkiller.mp4",
-      sentence: "Take a painkiller if your head hurts.",
+      sentence: "The painkiller is strong and fast in your body. He takes a painkiller for his headache.",
       imageType: "pharmacy",
       targetStyle: { top: '72.0%', left: '4.0%', width: '8.0%', height: '8.0%' },
       points: "6.4,64.8 19.2,64.8 19.2,72.0 6.4,72.0"
@@ -221,7 +221,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "감기약",
       audioUrl: "/audio/pharmacy/cold_medicine.mp3",
       videoPath: "/video/pharmacy/ColdMedicine.mp4",
-      sentence: "This cold medicine helps stop your runny nose.",
+      sentence: "The cold medicine is bitter and strong in the cup. She drinks cold medicine before bed.",
       imageType: "pharmacy",
       targetStyle: { top: '72.0%', left: '14.0%', width: '8.0%', height: '8.0%' },
       points: "22.4,64.8 35.2,64.8 35.2,72.0 22.4,72.0"
@@ -232,7 +232,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "기침 사탕(목캔디)",
       audioUrl: "/audio/pharmacy/cough_drop.mp3",
       videoPath: "/video/pharmacy/CoughDrop.mp4",
-      sentence: "Suck on a cough drop to soothe your throat.",
+      sentence: "The cough drop is sweet and round in the bag. He puts a cough drop in his mouth.",
       imageType: "pharmacy",
       targetStyle: { top: '85.0%', left: '48.0%', width: '6.0%', height: '8.0%' },
       points: "76.8,76.5 86.4,76.5 86.4,83.7 76.8,83.7"
@@ -243,7 +243,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "크림",
       audioUrl: "/audio/pharmacy/cream.mp3",
       videoPath: "/video/pharmacy/Cream.mp4",
-      sentence: "Rub the cream on your dry skin.",
+      sentence: "The cream is soft and white in the tube. She rubs cream on her skin.",
       imageType: "pharmacy",
       targetStyle: { top: '85.0%', left: '68.0%', width: '8.0%', height: '8.0%' },
       points: "108.8,76.5 121.6,76.5 121.6,83.7 108.8,83.7"
@@ -254,7 +254,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "알레르기 약",
       audioUrl: "/audio/pharmacy/allergy.mp3",
       videoPath: "/video/pharmacy/Allergy.mp4",
-      sentence: "Take allergy medicine when you sneeze a lot.",
+      sentence: "The allergy is bad and itchy in spring. He takes medicine for his allergy.",
       imageType: "pharmacy",
       targetStyle: { top: '20.0%', left: '55.0%', width: '6.0%', height: '6.0%' },
       points: "88.0,18.0 97.6,18.0 97.6,23.4 88.0,23.4"
@@ -265,7 +265,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "병",
       audioUrl: "/audio/pharmacy/bottle.mp3",
       videoPath: "/video/pharmacy/Bottle.mp4",
-      sentence: "Shake the bottle before opening it.",
+      sentence: "The bottle is full and heavy on the shelf. She picks a bottle from the shelf.",
       imageType: "pharmacy",
       targetStyle: { top: '5.0%', left: '20.0%', width: '8.0%', height: '8.0%' },
       points: "32.0,4.5 44.8,4.5 44.8,11.7 32.0,11.7"
@@ -276,7 +276,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "포장(상자)",
       audioUrl: "/audio/pharmacy/package.mp3",
       videoPath: "/video/pharmacy/Package.mp4",
-      sentence: "Open the package to get the pills.",
+      sentence: "The package is small and colorful on the counter. He opens the package carefully.",
       imageType: "pharmacy",
       targetStyle: { top: '85.0%', left: '35.0%', width: '8.0%', height: '8.0%' },
       points: "56.0,76.5 68.8,76.5 68.8,83.7 56.0,83.7"
@@ -287,7 +287,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "라벨(상표)",
       audioUrl: "/audio/pharmacy/label.mp3",
       videoPath: "/video/pharmacy/Label.mp4",
-      sentence: "Read the label carefully for instructions.",
+      sentence: "The label is small and clear on the bottle. She reads the label on the medicine.",
       imageType: "pharmacy",
       targetStyle: { top: '82.0%', left: '4.0%', width: '8.0%', height: '6.0%' },
       points: "6.4,73.8 19.2,73.8 19.2,79.2 6.4,79.2"
@@ -298,7 +298,7 @@ export const pharmacyData: PlaceDataType = {
       korean: "선반",
       audioUrl: "/audio/pharmacy/shelf.mp3",
       videoPath: "/video/pharmacy/Shelf.mp4",
-      sentence: "There are many medicines on the shelf.",
+      sentence: "The shelf is tall and full of medicine. He finds vitamins on the top shelf.",
       imageType: "pharmacy",
       targetStyle: { top: '5.0%', left: '45.0%', width: '8.0%', height: '8.0%' },
       points: "72.0,4.5 84.8,4.5 84.8,11.7 72.0,11.7"

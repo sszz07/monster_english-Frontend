@@ -22,7 +22,7 @@ import SplashScreen from './components/common/SplashScreen';
 import UserList from "@/pages/admin/UserList";
 import MyHousePage from "@/pages/placed/constants/my-house/HouseMain";
 import MyTownPage from "@/pages/placed/constants/my-town/TownMain";
-
+import FantasyNaturePage from "@/pages/placed/constants/fantasy-nature/FantasyNatureMain";
 
 
 function App() {
@@ -79,23 +79,18 @@ function App() {
                         {/* /placed/about 접속 시 MyHouse.tsx를 보여줌 (기존 AboutPage 역할) */}
                         <Route path="house/houseMain" element={<MyHousePage />} />
                         <Route path="town/townMain" element={<MyTownPage />} />
+                        <Route path="fantasy-nature/FantasyNatureMain" element={<FantasyNaturePage />} />
 
                         {/* House 및 세부 공간들 */}
                         <Route path="house/houseSubPage">
                             
-                     
-                            
-
                         </Route>
                         <Route path="house/houseGamePage">
                             
                         </Route>
                     
-                        <Route path="town/townMain" element={<MyTownPage />} />
+                        
                     </Route>
-
-
-
 
 
                     {/* Admin Routes */}

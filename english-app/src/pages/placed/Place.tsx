@@ -25,7 +25,7 @@ const PlacesPage: React.FC = () => {
         // id 1번인 My House의 경우 /my-house-main 경로로 이동하도록 설정
         { id: 1, name: "My House", img: myHouse, path: "/placed/house/houseMain" },
         { id: 2, name: "My Town", img: myTown, path: "/placed/town/townMain" },
-        { id: 3, name: "Fantasy Nature", img: fatacyNature, path: "/english/3" },
+        { id: 3, name: "Fantasy Nature", img: fatacyNature, path: "/placed/fantasy-nature/FantasyNatureMain" },
         { id: 4, name: "Adventure World", img: adventureWorld, path: "/english/4" },
         { id: 5, name: "Dream Land", img: dreamLand, path: "/english/5" },
         { id: 6, name: "Explore", img: explore, path: "/english/6" },

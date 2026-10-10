@@ -34,7 +34,7 @@ export const supermarketData: PlaceDataType = {
       korean: "카트",
       audioUrl: "/audio/supermarket/cart.mp3",
       videoPath: "/video/supermarket/Cart.mp4",
-      sentence: "Put the groceries in the shopping cart.",
+      sentence: "The cart is big and heavy. She pushes the cart.",
       imageType: "supermarket",
       targetStyle: { top: '60.0%', left: '70.0%', width: '14.0%', height: '25.0%' },
       points: "112.0,54.0 134.4,54.0 134.4,76.5 112.0,76.5"
@@ -45,7 +45,7 @@ export const supermarketData: PlaceDataType = {
       korean: "바구니",
       audioUrl: "/audio/supermarket/basket.mp3",
       videoPath: "/video/supermarket/Basket.mp4",
-      sentence: "I carry a basket for a few items.",
+      sentence: "The basket is small and round. He carries a basket.",
       imageType: "supermarket",
       targetStyle: { top: '42.0%', left: '46.0%', width: '6.0%', height: '12.0%' },
       points: "73.6,37.8 83.2,37.8 83.2,48.6 73.6,48.6"
@@ -56,7 +56,7 @@ export const supermarketData: PlaceDataType = {
       korean: "계산원",
       audioUrl: "/audio/supermarket/cashier.mp3",
       videoPath: "/video/supermarket/Cashier.mp4",
-      sentence: "The cashier scans the items.",
+      sentence: "The cashier is fast and friendly. The cashier scans the items.",
       imageType: "supermarket",
       targetStyle: { top: '35.0%', left: '85.0%', width: '8.0%', height: '20.0%' },
       points: "136.0,31.5 148.8,31.5 148.8,49.5 136.0,49.5"
@@ -67,7 +67,7 @@ export const supermarketData: PlaceDataType = {
       korean: "영수증",
       audioUrl: "/audio/supermarket/receipt.mp3",
       videoPath: "/video/supermarket/Receipt.mp4",
-      sentence: "Take your receipt after paying.",
+      sentence: "The receipt is long and thin. She takes the receipt.",
       imageType: "supermarket",
       targetStyle: { top: '56.0%', left: '94.0%', width: '5.0%', height: '8.0%' },
       points: "150.4,50.4 158.4,50.4 158.4,57.6 150.4,57.6"
@@ -78,7 +78,7 @@ export const supermarketData: PlaceDataType = {
       korean: "할인",
       audioUrl: "/audio/supermarket/discount.mp3",
       videoPath: "/video/supermarket/Discount.mp4",
-      sentence: "I bought these apples at a discount.",
+      sentence: "The discount is big and helpful. He finds a discount on the shelf.",
       imageType: "supermarket",
       targetStyle: { top: '60.0%', left: '42.0%', width: '8.0%', height: '12.0%' },
       points: "67.2,54.0 80.0,54.0 80.0,64.8 67.2,64.8"
@@ -89,7 +89,7 @@ export const supermarketData: PlaceDataType = {
       korean: "선반(진열장)",
       audioUrl: "/audio/supermarket/shelf.mp3",
       videoPath: "/video/supermarket/Shelf.mp4",
-      sentence: "The cookies are on the top shelf.",
+      sentence: "The shelf is tall and full. She puts the cereal on the shelf.",
       imageType: "supermarket",
       targetStyle: { top: '30.0%', left: '69.0%', width: '10.0%', height: '12.0%' },
       points: "110.4,27.0 126.4,27.0 126.4,37.8 110.4,37.8"
@@ -100,7 +100,7 @@ export const supermarketData: PlaceDataType = {
       korean: "통로",
       audioUrl: "/audio/supermarket/aisle.mp3",
       videoPath: "/video/supermarket/Aisle.mp4",
-      sentence: "We walk down the supermarket aisle.",
+      sentence: "The aisle is long and wide. He walks down the aisle.",
       imageType: "supermarket",
       targetStyle: { top: '58.0%', left: '21.0%', width: '15.0%', height: '15.0%' },
       points: "33.6,52.2 57.6,52.2 57.6,65.7 33.6,65.7"
@@ -111,7 +111,7 @@ export const supermarketData: PlaceDataType = {
       korean: "계산대",
       audioUrl: "/audio/supermarket/checkout.mp3",
       videoPath: "/video/supermarket/Checkout.mp4",
-      sentence: "Please pay at the checkout counter.",
+      sentence: "The checkout is busy and slow. She waits at the checkout.",
       imageType: "supermarket",
       targetStyle: { top: '75.0%', left: '20.0%', width: '25.0%', height: '15.0%' },
       points: "32.0,67.5 72.0,67.5 72.0,81.0 32.0,81.0"
@@ -122,7 +122,7 @@ export const supermarketData: PlaceDataType = {
       korean: "가격표",
       audioUrl: "/audio/supermarket/price_tag.mp3",
       videoPath: "/video/supermarket/PriceTag.mp4",
-      sentence: "Check the price tag before you buy.",
+      sentence: "The price tag is small and white. He reads the price tag.",
       imageType: "supermarket",
       targetStyle: { top: '48.0%', left: '15.0%', width: '5.0%', height: '5.0%' },
       points: "24.0,43.2 32.0,43.2 32.0,47.7 24.0,47.7"
@@ -133,7 +133,7 @@ export const supermarketData: PlaceDataType = {
       korean: "바코드",
       audioUrl: "/audio/supermarket/barcode.mp3",
       videoPath: "/video/supermarket/Barcode.mp4",
-      sentence: "The machine reads the barcode.",
+      sentence: "The barcode is black and striped. The cashier scans the barcode.",
       imageType: "supermarket",
       targetStyle: { top: '78.0%', left: '48.0%', width: '6.0%', height: '8.0%' },
       points: "76.8,70.2 86.4,70.2 86.4,77.4 76.8,77.4"
@@ -144,7 +144,7 @@ export const supermarketData: PlaceDataType = {
       korean: "유제품",
       audioUrl: "/audio/supermarket/dairy.mp3",
       videoPath: "/video/supermarket/Dairy.mp4",
-      sentence: "Milk and cheese are in the dairy section.",
+      sentence: "The dairy section is cold and white. She picks up milk in the dairy section.",
       imageType: "supermarket",
       targetStyle: { top: '8.0%', left: '34.0%', width: '10.0%', height: '20.0%' },
       points: "54.4,7.2 70.4,7.2 70.4,25.2 54.4,25.2"
@@ -155,7 +155,7 @@ export const supermarketData: PlaceDataType = {
       korean: "과자(간식)",
       audioUrl: "/audio/supermarket/snacks.mp3",
       videoPath: "/video/supermarket/Snacks.mp4",
-      sentence: "Kids love eating sweet snacks.",
+      sentence: "The snacks are crunchy and tasty. He puts snacks in the cart.",
       imageType: "supermarket",
       targetStyle: { top: '10.0%', left: '50.0%', width: '8.0%', height: '15.0%' },
       points: "80.0,9.0 92.8,9.0 92.8,22.5 80.0,22.5"
@@ -166,7 +166,7 @@ export const supermarketData: PlaceDataType = {
       korean: "농산물(청과물)",
       audioUrl: "/audio/supermarket/produce.mp3",
       videoPath: "/video/supermarket/Produce.mp4",
-      sentence: "Buy fresh tomatoes in the produce section.",
+      sentence: "The produce is fresh and colorful. She picks vegetables in the produce section.",
       imageType: "supermarket",
       targetStyle: { top: '32.0%', left: '2.0%', width: '16.0%', height: '7.0%' },
       points: "3.2,28.8 28.8,28.8 28.8,35.1 3.2,35.1"
@@ -177,7 +177,7 @@ export const supermarketData: PlaceDataType = {
       korean: "과일",
       audioUrl: "/audio/supermarket/fruit.mp3",
       videoPath: "/video/supermarket/Fruit.mp4",
-      sentence: "Apples and bananas are healthy fruit.",
+      sentence: "The fruit is fresh and sweet. He puts fruit in the basket.",
       imageType: "supermarket",
       targetStyle: { top: '40.0%', left: '2.0%', width: '12.0%', height: '8.0%' },
       points: "3.2,36.0 22.4,36.0 22.4,43.2 3.2,43.2"
@@ -188,7 +188,7 @@ export const supermarketData: PlaceDataType = {
       korean: "채소(야채)",
       audioUrl: "/audio/supermarket/vegetables.mp3",
       videoPath: "/video/supermarket/Vegetables.mp4",
-      sentence: "Eat green vegetables every day.",
+      sentence: "The vegetables are green and healthy. She buys vegetables.",
       imageType: "supermarket",
       targetStyle: { top: '55.0%', left: '2.0%', width: '12.0%', height: '10.0%' },
       points: "3.2,49.5 22.4,49.5 22.4,58.5 3.2,58.5"
@@ -199,7 +199,7 @@ export const supermarketData: PlaceDataType = {
       korean: "고기",
       audioUrl: "/audio/supermarket/meat.mp3",
       videoPath: "/video/supermarket/Meat.mp4",
-      sentence: "We need some meat for dinner.",
+      sentence: "The meat is red and heavy. He picks meat from the shelf.",
       imageType: "supermarket",
       targetStyle: { top: '10.0%', left: '88.0%', width: '10.0%', height: '20.0%' },
       points: "140.8,9.0 156.8,9.0 156.8,27.0 140.8,27.0"
@@ -210,7 +210,7 @@ export const supermarketData: PlaceDataType = {
       korean: "해산물",
       audioUrl: "/audio/supermarket/seafood.mp3",
       videoPath: "/video/supermarket/Seafood.mp4",
-      sentence: "I want to buy some fresh seafood.",
+      sentence: "The seafood is fresh and cold. She finds shrimp in the seafood section.",
       imageType: "supermarket",
       targetStyle: { top: '35.0%', left: '39.0%', width: '8.0%', height: '20.0%' },
       points: "62.4,31.5 75.2,31.5 75.2,49.5 62.4,49.5"
@@ -221,7 +221,7 @@ export const supermarketData: PlaceDataType = {
       korean: "시리얼",
       audioUrl: "/audio/supermarket/cereal.mp3",
       videoPath: "/video/supermarket/Cereal.mp4",
-      sentence: "I eat cereal with milk for breakfast.",
+      sentence: "The cereal is crunchy and sweet. He puts cereal in the cart.",
       imageType: "supermarket",
       targetStyle: { top: '15.0%', left: '60.0%', width: '10.0%', height: '12.0%' },
       points: "96.0,13.5 112.0,13.5 112.0,24.3 96.0,24.3"
@@ -232,7 +232,7 @@ export const supermarketData: PlaceDataType = {
       korean: "주스",
       audioUrl: "/audio/supermarket/juice.mp3",
       videoPath: "/video/supermarket/Juice.mp4",
-      sentence: "Orange juice is sweet and delicious.",
+      sentence: "The juice is cold and sweet. She takes a bottle of juice.",
       imageType: "supermarket",
       targetStyle: { top: '12.0%', left: '72.0%', width: '10.0%', height: '15.0%' },
       points: "115.2,10.8 131.2,10.8 131.2,24.3 115.2,24.3"
@@ -243,7 +243,7 @@ export const supermarketData: PlaceDataType = {
       korean: "병",
       audioUrl: "/audio/supermarket/bottle.mp3",
       videoPath: "/video/supermarket/Bottle.mp4",
-      sentence: "Can you get a bottle of water?",
+      sentence: "The bottle is tall and plastic. He puts the bottle in the cart.",
       imageType: "supermarket",
       targetStyle: { top: '18.0%', left: '28.0%', width: '5.0%', height: '10.0%' },
       points: "44.8,16.2 52.8,16.2 52.8,25.2 44.8,25.2"
@@ -254,7 +254,7 @@ export const supermarketData: PlaceDataType = {
       korean: "캔(통조림)",
       audioUrl: "/audio/supermarket/can.mp3",
       videoPath: "/video/supermarket/Can.mp4",
-      sentence: "Open a can of soup for lunch.",
+      sentence: "The can is round and heavy. She picks a can from the shelf.",
       imageType: "supermarket",
       targetStyle: { top: '28.0%', left: '58.0%', width: '5.0%', height: '8.0%' },
       points: "92.8,25.2 100.8,25.2 100.8,32.4 92.8,32.4"
@@ -265,7 +265,7 @@ export const supermarketData: PlaceDataType = {
       korean: "가방(봉투)",
       audioUrl: "/audio/supermarket/bag.mp3",
       videoPath: "/video/supermarket/Bag.mp4",
-      sentence: "Pack the items in a paper bag.",
+      sentence: "The bag is big and paper. He puts all his groceries in the bag.",
       imageType: "supermarket",
       targetStyle: { top: '48.0%', left: '76.0%', width: '6.0%', height: '10.0%' },
       points: "121.6,43.2 131.2,43.2 131.2,52.2 121.6,52.2"
@@ -276,7 +276,7 @@ export const supermarketData: PlaceDataType = {
       korean: "냉동고",
       audioUrl: "/audio/supermarket/freezer.mp3",
       videoPath: "/video/supermarket/Freezer.mp4",
-      sentence: "Ice cream is kept in the freezer.",
+      sentence: "The freezer is cold and loud. She opens the freezer.",
       imageType: "supermarket",
       targetStyle: { top: '35.0%', left: '28.0%', width: '10.0%', height: '20.0%' },
       points: "44.8,31.5 60.8,31.5 60.8,49.5 44.8,49.5"
@@ -287,7 +287,7 @@ export const supermarketData: PlaceDataType = {
       korean: "손님(고객)",
       audioUrl: "/audio/supermarket/customer.mp3",
       videoPath: "/video/supermarket/Customer.mp4",
-      sentence: "The customer is waiting to pay.",
+      sentence: "The customer is busy and careful. The customer reads every price tag.",
       imageType: "supermarket",
       targetStyle: { top: '42.0%', left: '60.0%', width: '8.0%', height: '25.0%' },
       points: "96.0,37.8 108.8,37.8 108.8,60.3 96.0,60.3"
@@ -298,7 +298,7 @@ export const supermarketData: PlaceDataType = {
       korean: "줄(대기줄)",
       audioUrl: "/audio/supermarket/line.mp3",
       videoPath: "/video/supermarket/Line.mp4",
-      sentence: "Please stand in line at the checkout.",
+      sentence: "The line is long and slow. He stands in line at the checkout.",
       imageType: "supermarket",
       targetStyle: { top: '65.0%', left: '52.0%', width: '10.0%', height: '12.0%' },
       points: "83.2,58.5 99.2,58.5 99.2,69.3 83.2,69.3"

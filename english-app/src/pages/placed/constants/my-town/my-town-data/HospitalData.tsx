@@ -34,7 +34,7 @@ export const hospitalData: PlaceDataType = {
       korean: "의사",
       audioUrl: "/audio/hospital/doctor.mp3",
       videoPath: "/video/hospital/Doctor.mp4",
-      sentence: "The doctor helps you when you are sick.",
+      sentence: "The doctor is kind and busy in the clinic. The doctor checks the patient with a stethoscope.",
       imageType: "hospital",
       targetStyle: { top: '15.0%', left: '58.0%', width: '12.0%', height: '25.0%' },
       points: "92.8,13.5 112.0,13.5 112.0,36.0 92.8,36.0"
@@ -45,7 +45,7 @@ export const hospitalData: PlaceDataType = {
       korean: "간호사",
       audioUrl: "/audio/hospital/nurse.mp3",
       videoPath: "/video/hospital/Nurse.mp4",
-      sentence: "The nurse is very kind and helpful.",
+      sentence: "The nurse is gentle and caring at the desk. The nurse gives medicine to the patient.",
       imageType: "hospital",
       targetStyle: { top: '35.0%', left: '28.0%', width: '12.0%', height: '20.0%' },
       points: "44.8,31.5 64.0,31.5 64.0,49.5 44.8,49.5"
@@ -56,7 +56,7 @@ export const hospitalData: PlaceDataType = {
       korean: "환자",
       audioUrl: "/audio/hospital/patient.mp3",
       videoPath: "/video/hospital/Patient.mp4",
-      sentence: "The little patient is waiting to see the doctor.",
+      sentence: "The patient is tired and sick in the waiting room. The patient waits for the doctor.",
       imageType: "hospital",
       targetStyle: { top: '35.0%', left: '85.0%', width: '12.0%', height: '25.0%' },
       points: "136.0,31.5 155.2,31.5 155.2,54.0 136.0,54.0"
@@ -67,7 +67,7 @@ export const hospitalData: PlaceDataType = {
       korean: "대기실",
       audioUrl: "/audio/hospital/waiting_room.mp3",
       videoPath: "/video/hospital/WaitingRoom.mp4",
-      sentence: "Please sit in the waiting room until your turn.",
+      sentence: "The waiting room is quiet and clean in the hospital. She sits in the waiting room.",
       imageType: "hospital",
       targetStyle: { top: '65.0%', left: '75.0%', width: '20.0%', height: '25.0%' },
       points: "120.0,58.5 152.0,58.5 152.0,81.0 120.0,81.0"
@@ -78,7 +78,7 @@ export const hospitalData: PlaceDataType = {
       korean: "병원(의원)",
       audioUrl: "/audio/hospital/clinic.mp3",
       videoPath: "/video/hospital/Clinic.mp4",
-      sentence: "I go to the clinic when I have a cold.",
+      sentence: "The clinic is small and neat on the first floor. He goes to the clinic for a checkup.",
       imageType: "hospital",
       targetStyle: { top: '60.0%', left: '20.0%', width: '15.0%', height: '15.0%' },
       points: "32.0,54.0 56.0,54.0 56.0,67.5 32.0,67.5"
@@ -89,7 +89,7 @@ export const hospitalData: PlaceDataType = {
       korean: "응급",
       audioUrl: "/audio/hospital/emergency.mp3",
       videoPath: "/video/hospital/Emergency.mp4",
-      sentence: "Go to the emergency room if it is very serious.",
+      sentence: "The emergency room is busy and loud at night. The doctor runs to the emergency room.",
       imageType: "hospital",
       targetStyle: { top: '2.0%', left: '8.0%', width: '15.0%', height: '10.0%' },
       points: "12.8,1.8 36.8,1.8 36.8,10.8 12.8,10.8"
@@ -100,7 +100,7 @@ export const hospitalData: PlaceDataType = {
       korean: "구급차",
       audioUrl: "/audio/hospital/ambulance.mp3",
       videoPath: "/video/hospital/Ambulance.mp4",
-      sentence: "The ambulance drives fast to the hospital.",
+      sentence: "The ambulance is loud and fast on the road. The nurse calls an ambulance for the patient.",
       imageType: "hospital",
       targetStyle: { top: '35.0%', left: '2.0%', width: '10.0%', height: '8.0%' },
       points: "3.2,31.5 19.2,31.5 19.2,38.7 3.2,38.7"
@@ -111,7 +111,7 @@ export const hospitalData: PlaceDataType = {
       korean: "체온계",
       audioUrl: "/audio/hospital/thermometer.mp3",
       videoPath: "/video/hospital/Thermometer.mp4",
-      sentence: "The nurse uses a thermometer to check your fever.",
+      sentence: "The thermometer is cold and thin in the case. She puts the thermometer under her arm.",
       imageType: "hospital",
       targetStyle: { top: '45.0%', left: '2.0%', width: '10.0%', height: '8.0%' },
       points: "3.2,40.5 19.2,40.5 19.2,47.7 3.2,47.7"
@@ -122,7 +122,7 @@ export const hospitalData: PlaceDataType = {
       korean: "약",
       audioUrl: "/audio/hospital/medicine.mp3",
       videoPath: "/video/hospital/Medicine.mp4",
-      sentence: "You need to take your medicine on time.",
+      sentence: "The medicine is strong and bitter in the bottle. The doctor gives medicine to the patient.",
       imageType: "hospital",
       targetStyle: { top: '60.0%', left: '2.0%', width: '12.0%', height: '15.0%' },
       points: "3.2,54.0 22.4,54.0 22.4,67.5 3.2,67.5"
@@ -133,7 +133,7 @@ export const hospitalData: PlaceDataType = {
       korean: "알약",
       audioUrl: "/audio/hospital/pill.mp3",
       videoPath: "/video/hospital/Pill.mp4",
-      sentence: "Swallow the small pill with water.",
+      sentence: "The pill is small and round in the bottle. He takes a pill with water.",
       imageType: "hospital",
       targetStyle: { top: '78.0%', left: '2.0%', width: '12.0%', height: '12.0%' },
       points: "3.2,70.2 22.4,70.2 22.4,81.0 3.2,81.0"
@@ -144,7 +144,7 @@ export const hospitalData: PlaceDataType = {
       korean: "주사",
       audioUrl: "/audio/hospital/injection.mp3",
       videoPath: "/video/hospital/Injection.mp4",
-      sentence: "The injection will pinch just a little bit.",
+      sentence: "The injection is scary but quick at the clinic. The nurse gives an injection to the child.",
       imageType: "hospital",
       targetStyle: { top: '35.0%', left: '15.0%', width: '8.0%', height: '8.0%' },
       points: "24.0,31.5 36.8,31.5 36.8,38.7 24.0,38.7"
@@ -155,7 +155,7 @@ export const hospitalData: PlaceDataType = {
       korean: "붕대",
       audioUrl: "/audio/hospital/bandage.mp3",
       videoPath: "/video/hospital/Bandage.mp4",
-      sentence: "We will put a soft bandage on your knee.",
+      sentence: "The bandage is white and clean on his arm. The nurse wraps a bandage around his leg.",
       imageType: "hospital",
       targetStyle: { top: '45.0%', left: '15.0%', width: '8.0%', height: '8.0%' },
       points: "24.0,40.5 36.8,40.5 36.8,47.7 24.0,47.7"
@@ -166,7 +166,7 @@ export const hospitalData: PlaceDataType = {
       korean: "깁스",
       audioUrl: "/audio/hospital/cast.mp3",
       videoPath: "/video/hospital/Cast.mp4",
-      sentence: "He wore a cast on his broken arm.",
+      sentence: "The cast is heavy and hard on his arm. The doctor puts a cast on her broken arm.",
       imageType: "hospital",
       targetStyle: { top: '80.0%', left: '40.0%', width: '12.0%', height: '10.0%' },
       points: "64.0,72.0 83.2,72.0 83.2,81.0 64.0,81.0"
@@ -177,7 +177,7 @@ export const hospitalData: PlaceDataType = {
       korean: "엑스레이(X선)",
       audioUrl: "/audio/hospital/x_ray.mp3",
       videoPath: "/video/hospital/X_Ray.mp4",
-      sentence: "The doctor looks at the X-ray of your bones.",
+      sentence: "The X-ray is clear and bright on the screen. The doctor looks at the X-ray on the wall.",
       imageType: "hospital",
       targetStyle: { top: '15.0%', left: '25.0%', width: '15.0%', height: '15.0%' },
       points: "40.0,13.5 64.0,13.5 64.0,27.0 40.0,27.0"
@@ -188,7 +188,7 @@ export const hospitalData: PlaceDataType = {
       korean: "건강 검진",
       audioUrl: "/audio/hospital/checkup.mp3",
       videoPath: "/video/hospital/Checkup.mp4",
-      sentence: "I go to the doctor for a yearly checkup.",
+      sentence: "The checkup is quick and easy at the clinic. She goes to the hospital for a checkup.",
       imageType: "hospital",
       targetStyle: { top: '30.0%', left: '72.0%', width: '10.0%', height: '25.0%' },
       points: "115.2,27.0 131.2,27.0 131.2,49.5 115.2,49.5"
@@ -199,7 +199,7 @@ export const hospitalData: PlaceDataType = {
       korean: "청진기",
       audioUrl: "/audio/hospital/stethoscope.mp3",
       videoPath: "/video/hospital/Stethoscope.mp4",
-      sentence: "The doctor listens to my heart with a stethoscope.",
+      sentence: "The stethoscope is cold and round on his chest. The doctor listens to his heart with a stethoscope.",
       imageType: "hospital",
       targetStyle: { top: '42.0%', left: '60.0%', width: '8.0%', height: '8.0%' },
       points: "96.0,37.8 108.8,37.8 108.8,45.0 96.0,45.0"
@@ -210,7 +210,7 @@ export const hospitalData: PlaceDataType = {
       korean: "혈압",
       audioUrl: "/audio/hospital/blood_pressure.mp3",
       videoPath: "/video/hospital/BloodPressure.mp4",
-      sentence: "The nurse will measure your blood pressure.",
+      sentence: "The blood pressure is normal and healthy today. The nurse checks his blood pressure with a machine.",
       imageType: "hospital",
       targetStyle: { top: '15.0%', left: '45.0%', width: '10.0%', height: '10.0%' },
       points: "72.0,13.5 88.0,13.5 88.0,22.5 72.0,22.5"
@@ -221,7 +221,7 @@ export const hospitalData: PlaceDataType = {
       korean: "마스크",
       audioUrl: "/audio/hospital/mask.mp3",
       videoPath: "/video/hospital/Mask.mp4",
-      sentence: "Wear a mask to stop germs from spreading.",
+      sentence: "The mask is blue and clean on his face. The doctor wears a mask during the operation.",
       imageType: "hospital",
       targetStyle: { top: '80.0%', left: '55.0%', width: '12.0%', height: '10.0%' },
       points: "88.0,72.0 107.2,72.0 107.2,81.0 88.0,81.0"
@@ -232,7 +232,7 @@ export const hospitalData: PlaceDataType = {
       korean: "장갑",
       audioUrl: "/audio/hospital/gloves.mp3",
       videoPath: "/video/hospital/Gloves.mp4",
-      sentence: "The doctor wears clean gloves to stay safe.",
+      sentence: "The gloves are thin and white on her hands. The nurse puts on gloves before the checkup.",
       imageType: "hospital",
       targetStyle: { top: '28.0%', left: '45.0%', width: '8.0%', height: '10.0%' },
       points: "72.0,25.2 84.8,25.2 84.8,34.2 72.0,34.2"
@@ -243,7 +243,7 @@ export const hospitalData: PlaceDataType = {
       korean: "수술",
       audioUrl: "/audio/hospital/operation.mp3",
       videoPath: "/video/hospital/Operation.mp4",
-      sentence: "The doctor is doing a small operation.",
+      sentence: "The operation is long and careful in the room. The doctor performs an operation on the patient.",
       imageType: "hospital",
       targetStyle: { top: '5.0%', left: '60.0%', width: '10.0%', height: '8.0%' },
       points: "96.0,4.5 112.0,4.5 112.0,11.7 96.0,11.7"
@@ -254,7 +254,7 @@ export const hospitalData: PlaceDataType = {
       korean: "건강",
       audioUrl: "/audio/hospital/health.mp3",
       videoPath: "/video/hospital/Health.mp4",
-      sentence: "Eating apples is good for your health.",
+      sentence: "His health is good after the treatment. She takes care of her health every day.",
       imageType: "hospital",
       targetStyle: { top: '10.0%', left: '82.0%', width: '15.0%', height: '20.0%' },
       points: "131.2,9.0 155.2,9.0 155.2,27.0 131.2,27.0"
@@ -265,7 +265,7 @@ export const hospitalData: PlaceDataType = {
       korean: "예약",
       audioUrl: "/audio/hospital/appointment.mp3",
       videoPath: "/video/hospital/Appointment.mp4",
-      sentence: "I have an appointment to see the doctor at two o'clock.",
+      sentence: "The appointment is early in the morning. He makes an appointment with the doctor.",
       imageType: "hospital",
       targetStyle: { top: '15.0%', left: '10.0%', width: '10.0%', height: '15.0%' },
       points: "16.0,13.5 32.0,13.5 32.0,27.0 16.0,27.0"
@@ -276,7 +276,7 @@ export const hospitalData: PlaceDataType = {
       korean: "증상",
       audioUrl: "/audio/hospital/symptoms.mp3",
       videoPath: "/video/hospital/Symptoms.mp4",
-      sentence: "Tell the doctor about your cold symptoms.",
+      sentence: "The symptoms are bad and uncomfortable in his body. She tells her symptoms to the doctor.",
       imageType: "hospital",
       targetStyle: { top: '15.0%', left: '72.0%', width: '8.0%', height: '12.0%' },
       points: "115.2,13.5 128.0,13.5 128.0,24.3 115.2,24.3"
@@ -287,7 +287,7 @@ export const hospitalData: PlaceDataType = {
       korean: "치료",
       audioUrl: "/audio/hospital/treatment.mp3",
       videoPath: "/video/hospital/Treatment.mp4",
-      sentence: "Rest is the best treatment for a fever.",
+      sentence: "The treatment is slow but helpful for the patient. The doctor explains the treatment to the family.",
       imageType: "hospital",
       targetStyle: { top: '45.0%', left: '45.0%', width: '12.0%', height: '12.0%' },
       points: "72.0,40.5 91.2,40.5 91.2,51.3 72.0,51.3"
@@ -298,7 +298,7 @@ export const hospitalData: PlaceDataType = {
       korean: "약국",
       audioUrl: "/audio/hospital/pharmacy.mp3",
       videoPath: "/video/hospital/Pharmacy.mp4",
-      sentence: "We buy our medicine at the pharmacy.",
+      sentence: "The pharmacy is busy and bright on the first floor. She picks up medicine at the pharmacy.",
       imageType: "hospital",
       targetStyle: { top: '60.0%', left: '40.0%', width: '15.0%', height: '15.0%' },
       points: "64.0,54.0 88.0,54.0 88.0,67.5 64.0,67.5"

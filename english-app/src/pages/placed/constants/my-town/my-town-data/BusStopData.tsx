@@ -36,7 +36,7 @@ export const busStopData: PlaceDataType = {
       korean: "버스 정류장",
       audioUrl: "/audio/busstop/bus_stop.mp3",
       videoPath: "/video/busstop/BusStop.mp4",
-      sentence: "People are waiting for the bus at the bus stop.",
+      sentence: "The bus stop is clean and busy. The children wait at the bus stop.",
       imageType: "busstop",
       targetStyle: { top: '14.0%', left: '32.0%', width: '18.0%', height: '7.0%' },
       points: "51.2,12.6 80.0,12.6 80.0,18.9 51.2,18.9"
@@ -47,7 +47,7 @@ export const busStopData: PlaceDataType = {
       korean: "노선",
       audioUrl: "/audio/busstop/route.mp3",
       videoPath: "/video/busstop/Route.mp4",
-      sentence: "I check the bus route to find my way.",
+      sentence: "The route is long and winding. She checks the route on the map.",
       imageType: "busstop",
       targetStyle: { top: '23.0%', left: '29.0%', width: '10.0%', height: '24.0%' },
       points: "46.4,20.7 62.4,20.7 62.4,42.3 46.4,42.3"
@@ -58,7 +58,7 @@ export const busStopData: PlaceDataType = {
       korean: "운전기사",
       audioUrl: "/audio/busstop/driver.mp3",
       videoPath: "/video/busstop/Driver.mp4",
-      sentence: "The driver says hello to the passengers.",
+      sentence: "The driver is tall and friendly. The driver opens the door.",
       imageType: "busstop",
       targetStyle: { top: '22.0%', left: '88.0%', width: '10.5%', height: '27.0%' },
       points: "140.8,19.8 157.6,19.8 157.6,44.1 140.8,44.1"
@@ -69,7 +69,7 @@ export const busStopData: PlaceDataType = {
       korean: "승객",
       audioUrl: "/audio/busstop/passenger.mp3",
       videoPath: "/video/busstop/Passenger.mp4",
-      sentence: "A passenger is getting on the bus.",
+      sentence: "The passenger is tired and quiet. The passenger sits on the seat.",
       imageType: "busstop",
       targetStyle: { top: '37.0%', left: '64.0%', width: '8.0%', height: '10.5%' },
       points: "102.4,33.3 115.2,33.3 115.2,42.7 102.4,42.7"
@@ -80,7 +80,7 @@ export const busStopData: PlaceDataType = {
       korean: "요금",
       audioUrl: "/audio/busstop/fare.mp3",
       videoPath: "/video/busstop/Fare.mp4",
-      sentence: "I pay the bus fare when I get on.",
+      sentence: "The fare is small and cheap. He pays the fare.",
       imageType: "busstop",
       targetStyle: { top: '48.5%', left: '71.0%', width: '4.0%', height: '5.5%' },
       points: "113.6,43.6 120.0,43.6 120.0,48.6 113.6,48.6"
@@ -91,7 +91,7 @@ export const busStopData: PlaceDataType = {
       korean: "카드(교통카드)",
       audioUrl: "/audio/busstop/card.mp3",
       videoPath: "/video/busstop/Card.mp4",
-      sentence: "Tag your card to pay for the ride.",
+      sentence: "The card is thin and blue. She taps the card.",
       imageType: "busstop",
       targetStyle: { top: '47.0%', left: '66.0%', width: '5.5%', height: '6.5%' },
       points: "105.6,42.3 114.4,42.3 114.4,48.1 105.6,48.1"
@@ -102,7 +102,7 @@ export const busStopData: PlaceDataType = {
       korean: "줄",
       audioUrl: "/audio/busstop/line.mp3",
       videoPath: "/video/busstop/Line.mp4",
-      sentence: "People stand in a line to wait for the bus.",
+      sentence: "The line is long and straight. The students stand in line.",
       imageType: "busstop",
       targetStyle: { top: '56.0%', left: '46.0%', width: '13.0%', height: '24.0%' },
       points: "73.6,50.4 94.4,50.4 94.4,72.0 73.6,72.0"
@@ -113,7 +113,7 @@ export const busStopData: PlaceDataType = {
       korean: "시간표",
       audioUrl: "/audio/busstop/schedule.mp3",
       videoPath: "/video/busstop/Schedule.mp4",
-      sentence: "Look at the schedule to see the bus time.",
+      sentence: "The schedule is clear and helpful. He reads the schedule at the bus stop.",
       imageType: "busstop",
       targetStyle: { top: '27.0%', left: '52.0%', width: '5.5%', height: '13.0%' },
       points: "83.2,24.3 92.0,24.3 92.0,36.0 83.2,36.0"
@@ -124,7 +124,7 @@ export const busStopData: PlaceDataType = {
       korean: "벤치(의자)",
       audioUrl: "/audio/busstop/bench.mp3",
       videoPath: "/video/busstop/Bench.mp4",
-      sentence: "A boy is sitting on the bench.",
+      sentence: "The bench is hard and wooden. She sits on the bench.",
       imageType: "busstop",
       targetStyle: { top: '60.0%', left: '30.0%', width: '16.0%', height: '7.5%' },
       points: "48.0,54.0 73.6,54.0 73.6,60.7 48.0,60.7"
@@ -135,7 +135,7 @@ export const busStopData: PlaceDataType = {
       korean: "지붕",
       audioUrl: "/audio/busstop/roof.mp3",
       videoPath: "/video/busstop/Roof.mp4",
-      sentence: "The bus stop roof keeps us safe from the rain.",
+      sentence: "The roof is wide and flat. The roof keeps the rain away.",
       imageType: "busstop",
       targetStyle: { top: '4.0%', left: '26.0%', width: '33.0%', height: '10.0%' },
       points: "41.6,3.6 94.4,3.6 94.4,12.6 41.6,12.6"
@@ -146,7 +146,7 @@ export const busStopData: PlaceDataType = {
       korean: "비가림막(쉘터)",
       audioUrl: "/audio/busstop/shelter.mp3",
       videoPath: "/video/busstop/Shelter.mp4",
-      sentence: "We can stay warm inside the bus shelter.",
+      sentence: "The shelter is small and cozy. The children stand inside the shelter.",
       imageType: "busstop",
       targetStyle: { top: '18.0%', left: '24.0%', width: '5.0%', height: '42.0%' },
       points: "38.4,16.2 46.4,16.2 46.4,54.0 38.4,54.0"
@@ -157,7 +157,7 @@ export const busStopData: PlaceDataType = {
       korean: "표지판",
       audioUrl: "/audio/busstop/sign.mp3",
       videoPath: "/video/busstop/Sign.mp4",
-      sentence: "The sign shows the bus number.",
+      sentence: "The sign is big and yellow. She looks at the sign.",
       imageType: "busstop",
       targetStyle: { top: '13.0%', left: '67.0%', width: '6.5%', height: '14.0%' },
       points: "107.2,11.7 117.6,11.7 117.6,24.3 107.2,24.3"
@@ -168,7 +168,7 @@ export const busStopData: PlaceDataType = {
       korean: "도로",
       audioUrl: "/audio/busstop/road.mp3",
       videoPath: "/video/busstop/Road.mp4",
-      sentence: "The bus drives safely on the road.",
+      sentence: "The road is long and busy. The bus drives on the road.",
       imageType: "busstop",
       targetStyle: { top: '78.0%', left: '68.0%', width: '28.0%', height: '18.0%' },
       points: "108.8,70.2 153.6,70.2 153.6,86.4 108.8,86.4"
@@ -179,7 +179,7 @@ export const busStopData: PlaceDataType = {
       korean: "교통(차량들)",
       audioUrl: "/audio/busstop/traffic.mp3",
       videoPath: "/video/busstop/Traffic.mp4",
-      sentence: "There is a lot of traffic on the street today.",
+      sentence: "The traffic is loud and slow. He watches the traffic.",
       imageType: "busstop",
       targetStyle: { top: '22.0%', left: '60.0%', width: '9.0%', height: '9.0%' },
       points: "96.0,19.8 110.4,19.8 110.4,27.9 96.0,27.9"
@@ -190,7 +190,7 @@ export const busStopData: PlaceDataType = {
       korean: "좌석",
       audioUrl: "/audio/busstop/seat.mp3",
       videoPath: "/video/busstop/Seat.mp4",
-      sentence: "I find an empty seat on the bus.",
+      sentence: "The seat is soft and comfortable. She takes a seat on the bus.",
       imageType: "busstop",
       targetStyle: { top: '30.0%', left: '80.0%', width: '7.5%', height: '19.0%' },
       points: "128.0,27.0 140.0,27.0 140.0,44.1 128.0,44.1"
@@ -201,7 +201,7 @@ export const busStopData: PlaceDataType = {
       korean: "서 있는 곳(입석 구역)",
       audioUrl: "/audio/busstop/standing_area.mp3",
       videoPath: "/video/busstop/StandingArea.mp4",
-      sentence: "When seats are full, people stay in the standing area.",
+      sentence: "The standing area is wide and open. The passengers wait in the standing area.",
       imageType: "busstop",
       targetStyle: { top: '78.0%', left: '26.0%', width: '18.0%', height: '15.0%' },
       points: "41.6,70.2 70.4,70.2 70.4,83.7 41.6,83.7"
@@ -212,7 +212,7 @@ export const busStopData: PlaceDataType = {
       korean: "배낭",
       audioUrl: "/audio/busstop/backpack.mp3",
       videoPath: "/video/busstop/Backpack.mp4",
-      sentence: "The student carries a heavy backpack.",
+      sentence: "The backpack is heavy and full. He puts his backpack on the bench.",
       imageType: "busstop",
       targetStyle: { top: '69.0%', left: '25.0%', width: '6.5%', height: '9.5%' },
       points: "40.0,62.1 50.4,62.1 50.4,70.6 40.0,70.6"
@@ -223,7 +223,7 @@ export const busStopData: PlaceDataType = {
       korean: "지도",
       audioUrl: "/audio/busstop/map.mp3",
       videoPath: "/video/busstop/Map.mp4",
-      sentence: "Look at the map to see where to go.",
+      sentence: "The map is colorful and clear. She finds her stop on the map.",
       imageType: "busstop",
       targetStyle: { top: '46.0%', left: '29.0%', width: '9.5%', height: '11.0%' },
       points: "46.4,41.4 61.6,41.4 61.6,51.3 46.4,51.3"
@@ -234,7 +234,7 @@ export const busStopData: PlaceDataType = {
       korean: "환승",
       audioUrl: "/audio/busstop/transfer.mp3",
       videoPath: "/video/busstop/Transfer.mp4",
-      sentence: "You can transfer to another bus here.",
+      sentence: "The transfer is easy and free. He gets a transfer at the next stop.",
       imageType: "busstop",
       targetStyle: { top: '28.0%', left: '42.5%', width: '6.5%', height: '15.0%' },
       points: "68.0,25.2 78.4,25.2 78.4,38.7 68.0,38.7"
@@ -245,7 +245,7 @@ export const busStopData: PlaceDataType = {
       korean: "도착",
       audioUrl: "/audio/busstop/arrival.mp3",
       videoPath: "/video/busstop/Arrival.mp4",
-      sentence: "The digital screen shows the bus arrival time.",
+      sentence: "The arrival time is early and exact. She checks the arrival on the schedule.",
       imageType: "busstop",
       targetStyle: { top: '62.0%', left: '78.0%', width: '14.0%', height: '12.0%' },
       points: "124.8,55.8 147.2,55.8 147.2,66.6 124.8,66.6"
@@ -256,7 +256,7 @@ export const busStopData: PlaceDataType = {
       korean: "출발",
       audioUrl: "/audio/busstop/departure.mp3",
       videoPath: "/video/busstop/Departure.mp4",
-      sentence: "The bus departure is in five minutes.",
+      sentence: "The departure time is soon and close. He checks the departure time.",
       imageType: "busstop",
       targetStyle: { top: '24.0%', left: '69.0%', width: '4.5%', height: '6.0%' },
       points: "110.4,21.6 117.6,21.6 117.6,27.0 110.4,27.0"
@@ -267,7 +267,7 @@ export const busStopData: PlaceDataType = {
       korean: "하차벨(벨)",
       audioUrl: "/audio/busstop/bell.mp3",
       videoPath: "/video/busstop/Bell.mp4",
-      sentence: "Press the bell when you want to get off.",
+      sentence: "The bell is small and loud. She rings the bell.",
       imageType: "busstop",
       targetStyle: { top: '15.0%', left: '51.5%', width: '3.5%', height: '5.5%' },
       points: "82.4,13.5 88.0,13.5 88.0,18.4 82.4,18.4"
@@ -278,7 +278,7 @@ export const busStopData: PlaceDataType = {
       korean: "손잡이",
       audioUrl: "/audio/busstop/handrail.mp3",
       videoPath: "/video/busstop/Handrail.mp4",
-      sentence: "Hold the handrail tight while the bus is moving.",
+      sentence: "The handrail is cold and metal. He holds the handrail on the bus.",
       imageType: "busstop",
       targetStyle: { top: '20.0%', left: '85.5%', width: '3.0%', height: '22.0%' },
       points: "136.8,18.0 141.6,18.0 141.6,37.8 136.8,37.8"
@@ -289,7 +289,7 @@ export const busStopData: PlaceDataType = {
       korean: "창문",
       audioUrl: "/audio/busstop/window.mp3",
       videoPath: "/video/busstop/Window.mp4",
-      sentence: "I look outside through the bus window.",
+      sentence: "The window is big and clear. She looks outside through the window.",
       imageType: "busstop",
       targetStyle: { top: '12.0%', left: '81.0%', width: '14.0%', height: '9.0%' },
       points: "129.6,10.8 152.0,10.8 152.0,18.9 129.6,18.9"
@@ -300,7 +300,7 @@ export const busStopData: PlaceDataType = {
       korean: "거울(백미러)",
       audioUrl: "/audio/busstop/mirror.mp3",
       videoPath: "/video/busstop/Mirror.mp4",
-      sentence: "The driver checks the mirror before driving.",
+      sentence: "The mirror is round and shiny. The driver checks the mirror.",
       imageType: "busstop",
       targetStyle: { top: '32.0%', left: '72.5%', width: '3.5%', height: '8.5%' },
       points: "116.0,28.8 121.6,28.8 121.6,36.4 116.0,36.4"
