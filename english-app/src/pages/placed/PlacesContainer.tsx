@@ -27,8 +27,8 @@ export default function AdventureContainer({ placeData }: AdventureContainerProp
 
   const totalWords = masterRegions.length;
   const clickedCount = clickedSet.size;
-  const isGameUnlocked = clickedCount >= totalWords && totalWords > 0;
-
+  // const isGameUnlocked = clickedCount >= totalWords && totalWords > 0;
+const isGameUnlocked = true;
   // 오디오 시스템 제어 핸들러
   const stopCurrentAudio = () => {
     if (currentAudioRef.current) {
